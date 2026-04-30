@@ -1,3 +1,5 @@
 # DEAPC-PT2
-trabalho de deapc
-teste de modificacao
+Este projeto consiste numa aplicação web de sistema de reservas online, destinada à gestão de reservas de hotéis, voos ou eventos, com integração a uma base de dados para armazenamento e processamento de informação.
+O principal objetivo da aplicação é permitir aos utilizadores pesquisar disponibilidade, efetuar reservas e gerir os seus pedidos de forma simples e eficiente, ao mesmo tempo que garante o controlo e organização da informação por parte da entidade gestora. Adicionalmente, pretende assegurar o registo seguro de dados dos clientes e o processamento de pagamentos.
+A aplicação contempla diferentes perfis de utilizador. Por um lado, o cliente, que pode pesquisar opções disponíveis, efetuar reservas, consultar o histórico e realizar pagamentos. Por outro lado, o administrador, responsável por gerir os recursos (quartos, voos ou eventos), atualizar disponibilidades, validar ou cancelar reservas e consultar relatórios do sistema.
+Entre as principais funcionalidades destacam-se a pesquisa e filtragem de opções disponíveis, criação e gestão de reservas, autenticação de utilizadores, processamento de pagamentos e gestão administrativa dos dados. O sistema também deverá garantir a integridade da informação e uma comunicação eficiente com a base de dados para assegurar o correto funcionamento da aplicação.
