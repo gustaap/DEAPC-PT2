@@ -73,8 +73,18 @@ background:#eef4ff;
 }
 
 .logo {
-  font-weight: bold;
-  color: #1a2a4a;
+
+font-family: 'DM Serif Display', serif;
+
+font-size: 36px;
+
+color:#1a2a4a;
+
+letter-spacing:2px;
+
+text-shadow:
+1px 1px 3px rgba(0,0,0,0.1);
+
 }
 
 .nav a {
