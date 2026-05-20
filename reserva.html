@@ -572,93 +572,45 @@
 
     <!-- Resumo lateral -->
     <aside class="resumo">
-      <h3>Resumo da reserva</h3>
-
-      <div class="resumo-item">
-        <div class="estrelas" id="reserva-estrelas">★★★★★</div>
-
-        <div class="titulo" id="reserva-titulo">Hotel Avenida Palace</div>
-
-        <div class="detalhe" id="reserva-detalhe">
-          Lisboa, Portugal<br />
-          15 Jun – 20 Jun 2026 · 5 noites<br />
-          Quarto duplo superior · 2 adultos<br />
-          Inclui pequeno-almoço
-        </div>
-      </div>
-
-      <div class="linha-preco">
-        <span id="reserva-preco-label">195 € × 5 noites</span>
-        <span id="reserva-subtotal">975,00 €</span>
-      </div>
-      <div class="linha-preco">
-        <span>Taxas e impostos</span>
-        <span>87,75 €</span>
-      </div>
-      <div class="linha-preco">
-        <span>Pequeno-almoço</span>
-        <span>incluído</span>
-      </div>
-
-      <div class="linha-total">
-        <span>Total</span>
-        <span id="reserva-total">1.062,75 €</span>
-      </div>
-
-      <div class="badge-seguro">🔒 Pagamento seguro e encriptado</div>
-
-      <button class="btn-confirmar" onclick="window.location.href='historico.html'">
-        Confirmar reserva
-      </button>
-
-      <p class="nota-cancelamento">
-        Cancelamento gratuito até 48h antes do check-in.<br />
-        Sem taxas ocultas.
-      </p>
-<aside class="resumo">
   <h3>Resumo da reserva</h3>
 
   <div class="resumo-item">
     <div class="estrelas" id="reserva-icone">★★★★★</div>
 
-    <div class="titulo" id="reserva-titulo">Hotel Avenida Palace</div>
+    <div class="titulo" id="reserva-titulo">A carregar reserva...</div>
 
     <div class="detalhe" id="reserva-detalhe">
-      Lisboa, Portugal<br />
-      15 Jun – 20 Jun 2026 · 5 noites<br />
-      Quarto duplo superior · 2 adultos<br />
-      Inclui pequeno-almoço
+      A carregar detalhes...
     </div>
   </div>
 
   <div class="linha-preco">
-    <span id="reserva-preco-label">195 € × 5 noites</span>
-    <span id="reserva-subtotal">975,00 €</span>
+    <span id="reserva-preco-label">Preço</span>
+    <span id="reserva-subtotal">0,00 €</span>
   </div>
 
   <div class="linha-preco">
     <span id="reserva-taxas-label">Taxas e impostos</span>
-    <span id="reserva-taxas">87,75 €</span>
+    <span id="reserva-taxas">0,00 €</span>
   </div>
 
   <div class="linha-preco">
-    <span id="reserva-extra-label">Pequeno-almoço</span>
+    <span id="reserva-extra-label">Extra</span>
     <span id="reserva-extra">incluído</span>
   </div>
 
   <div class="linha-total">
     <span>Total</span>
-    <span id="reserva-total">1.062,75 €</span>
+    <span id="reserva-total">0,00 €</span>
   </div>
 
-  <div class="badge-seguro">Pagamento seguro e encriptado</div>
+  <div class="badge-seguro">🔒 Pagamento seguro e encriptado</div>
 
   <button class="btn-confirmar" onclick="window.location.href='historico.html'">
     Confirmar reserva
   </button>
 
   <p class="nota-cancelamento" id="reserva-nota">
-    Cancelamento gratuito até 48h antes do check-in.<br />
     Sem taxas ocultas.
   </p>
 </aside>
@@ -671,69 +623,285 @@
     el.classList.add('selecionado');
   }
 
-  const reservas = {
-    hotel: {
-      icone: "★★★★★",
-      titulo: "Hotel Avenida Palace",
-      detalhe: "Lisboa, Portugal<br>15 Jun – 20 Jun 2026 · 5 noites<br>Quarto duplo superior · 2 adultos<br>Inclui pequeno-almoço",
-      precoLabel: "195 € × 5 noites",
-      subtotal: "975,00 €",
-      taxasLabel: "Taxas e impostos",
-      taxas: "87,75 €",
-      extraLabel: "Pequeno-almoço",
-      extra: "incluído",
-      total: "1.062,75 €",
-      nota: "Cancelamento gratuito até 48h antes do check-in.<br>Sem taxas ocultas."
+  const itensDatabase = [
+    {
+      id: 1,
+      tipo: 'hotel',
+      nome: 'Hotel Avenida Palace',
+      destino: 'Lisboa, Portugal',
+      estrelas: '5',
+      preco: 195,
+      capacidadeMax: 4,
+      localizacao: 'Lisboa, Avenida da Liberdade • 0,5 km do centro',
+      comodidades: 'Wi-Fi gratuito • Piscina • Spa • Restaurante'
     },
-
-    voo: {
-      icone: "✈",
-      titulo: "LIS → BCN · TAP Air Portugal",
-      detalhe: "Lisboa para Barcelona<br>16 Jun 2026 · Ida simples<br>1 passageiro · Classe económica<br>Bagagem de mão incluída",
-      precoLabel: "1 bilhete de avião",
-      subtotal: "89,00 €",
-      taxasLabel: "Taxas aeroportuárias",
-      taxas: "incluídas",
-      extraLabel: "Bagagem de mão",
-      extra: "incluída",
-      total: "89,00 €",
-      nota: "Alterações sujeitas às condições da companhia aérea.<br>Sem taxas ocultas."
+    {
+      id: 2,
+      tipo: 'hotel',
+      nome: 'Hotel Bairro Alto',
+      destino: 'Lisboa, Portugal',
+      estrelas: '4',
+      preco: 145,
+      capacidadeMax: 3,
+      localizacao: 'Lisboa, Chiado • 1,2 km do centro',
+      comodidades: 'Wi-Fi gratuito • Bar • Vista cidade • Animais permitidos'
     },
-
-    evento: {
-      icone: "🎟",
-      titulo: "Festival NOS Alive 2026",
-      detalhe: "Lisboa, Portugal<br>12 Jul 2026 · Evento musical<br>1 bilhete geral<br>Entrada válida para o evento",
-      precoLabel: "1 bilhete geral",
-      subtotal: "75,00 €",
-      taxasLabel: "Taxas de serviço",
-      taxas: "incluídas",
-      extraLabel: "Tipo de entrada",
-      extra: "geral",
-      total: "75,00 €",
-      nota: "Bilhete válido apenas para a data indicada.<br>Sem taxas ocultas."
+    {
+      id: 3,
+      tipo: 'hotel',
+      nome: 'Residencial Rossio',
+      destino: 'Lisboa, Portugal',
+      estrelas: '3',
+      preco: 55,
+      capacidadeMax: 2,
+      localizacao: 'Lisboa, Baixa • Centro histórico',
+      comodidades: 'Wi-Fi gratuito • Pequeno-almoço incluído • Ar condicionado'
+    },
+    {
+      id: 4,
+      tipo: 'hotel',
+      nome: 'Pestana CR7 Lisboa',
+      destino: 'Lisboa, Portugal',
+      estrelas: '4',
+      preco: 130,
+      capacidadeMax: 2,
+      localizacao: 'Lisboa, Rua do Comércio • 0,3 km do centro',
+      comodidades: 'Wi-Fi gratuito • Ginásio • Bar Desportivo'
+    },
+    {
+      id: 5,
+      tipo: 'hotel',
+      nome: 'Tivoli Avenida Liberdade',
+      destino: 'Lisboa, Portugal',
+      estrelas: '5',
+      preco: 260,
+      capacidadeMax: 4,
+      localizacao: 'Lisboa, Avenida da Liberdade • 0,8 km do centro',
+      comodidades: 'Piscina Exterior • Sky Bar • Spa de Luxo'
+    },
+    {
+      id: 6,
+      tipo: 'hotel',
+      nome: 'Selina Secret Garden',
+      destino: 'Lisboa, Portugal',
+      estrelas: '3',
+      preco: 42,
+      capacidadeMax: 2,
+      localizacao: 'Lisboa, Cais do Sodré • 1,5 km do centro',
+      comodidades: 'Wi-Fi gratuito • Piscina • Cozinha partilhada'
+    },
+    {
+      id: 7,
+      tipo: 'hotel',
+      nome: 'Hotel Mundial',
+      destino: 'Lisboa, Portugal',
+      estrelas: '4',
+      preco: 98,
+      capacidadeMax: 3,
+      localizacao: 'Lisboa, Martim Moniz • 0,1 km do centro',
+      comodidades: 'Rooftop Bar • Estacionamento Grátis'
+    },
+    {
+      id: 8,
+      tipo: 'hotel',
+      nome: 'Myriad by SANA',
+      destino: 'Lisboa, Portugal',
+      estrelas: '5',
+      preco: 310,
+      capacidadeMax: 4,
+      localizacao: 'Lisboa, Parque das Nações • Frente ao Rio',
+      comodidades: 'Vista Panorâmica • Spa • Restaurante Michelin'
+    },
+    {
+      id: 9,
+      tipo: 'voo',
+      nome: 'TAP Air Portugal (LIS ✈ BCN)',
+      origem: 'Lisboa, Portugal',
+      destino: 'Barcelona, Espanha',
+      estrelas: 'voo',
+      preco: 89,
+      capacidadeMax: 120,
+      localizacao: 'Voo LIS ➝ BCN • Direto',
+      comodidades: 'Bagagem de mão • Refeição a bordo'
+    },
+    {
+      id: 10,
+      tipo: 'voo',
+      nome: 'Ryanair (MAD ✈ LIS)',
+      origem: 'Madrid, Espanha',
+      destino: 'Lisboa, Portugal',
+      estrelas: 'voo',
+      preco: 35,
+      capacidadeMax: 160,
+      localizacao: 'Voo MAD ➝ LIS • Económico • Direto',
+      comodidades: 'Artigo pessoal pequeno'
+    },
+    {
+      id: 11,
+      tipo: 'evento',
+      nome: 'Festival NOS Alive',
+      destino: 'Lisboa, Portugal',
+      estrelas: 'evento',
+      preco: 75,
+      capacidadeMax: 5000,
+      localizacao: 'Lisboa, Passeio Marítimo de Algés',
+      comodidades: 'Bilhete geral • Música ao vivo • Entrada diária'
     }
-  };
+  ];
 
-  const parametros = new URLSearchParams(window.location.search);
-  const tipoReserva = parametros.get("reserva") || "hotel";
-  const reserva = reservas[tipoReserva] || reservas.hotel;
+  const params = new URLSearchParams(window.location.search);
 
-  document.getElementById("reserva-icone").textContent = reserva.icone;
-  document.getElementById("reserva-titulo").textContent = reserva.titulo;
-  document.getElementById("reserva-detalhe").innerHTML = reserva.detalhe;
+  const id = Number(params.get('id'));
+  const tipo = params.get('tipo') || '';
+  const entrada = params.get('entrada') || '';
+  const saida = params.get('saida') || '';
+  const pessoas = Number(params.get('pessoas')) || 1;
 
-  document.getElementById("reserva-preco-label").textContent = reserva.precoLabel;
-  document.getElementById("reserva-subtotal").textContent = reserva.subtotal;
+  const item = itensDatabase.find(i => i.id === id && i.tipo === tipo) ||
+               itensDatabase.find(i => i.id === id);
 
-  document.getElementById("reserva-taxas-label").textContent = reserva.taxasLabel;
-  document.getElementById("reserva-taxas").textContent = reserva.taxas;
+  function formatarMoeda(valor) {
+    return valor.toLocaleString('pt-PT', {
+      style: 'currency',
+      currency: 'EUR'
+    });
+  }
 
-  document.getElementById("reserva-extra-label").textContent = reserva.extraLabel;
-  document.getElementById("reserva-extra").textContent = reserva.extra;
+  function formatarData(dataISO) {
+    if (!dataISO) return '';
 
-  document.getElementById("reserva-total").textContent = reserva.total;
-  document.getElementById("reserva-nota").innerHTML = reserva.nota;
+    const data = new Date(dataISO);
+
+    return data.toLocaleDateString('pt-PT', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+  }
+
+  function calcularNoites(entrada, saida) {
+    if (!entrada || !saida) return 1;
+
+    const dataEntrada = new Date(entrada);
+    const dataSaida = new Date(saida);
+    const diferencaMs = dataSaida - dataEntrada;
+    const noites = Math.ceil(diferencaMs / (1000 * 60 * 60 * 24));
+
+    return Math.max(noites, 1);
+  }
+
+  function calcularSubtotal(item) {
+    const noites = calcularNoites(entrada, saida);
+
+    if (item.tipo === 'hotel') {
+      return item.preco * noites;
+    }
+
+    return item.preco * pessoas;
+  }
+
+  function calcularTaxas(item, subtotal) {
+    if (item.tipo === 'hotel') {
+      return subtotal * 0.09;
+    }
+
+    return 0;
+  }
+
+  function atualizarResumoReserva() {
+    if (!item) {
+      document.getElementById('reserva-titulo').textContent = 'Reserva não encontrada';
+      document.getElementById('reserva-detalhe').innerHTML =
+        'Volta aos resultados e seleciona uma opção válida.';
+      return;
+    }
+
+    const noites = calcularNoites(entrada, saida);
+    const subtotal = calcularSubtotal(item);
+    const taxas = calcularTaxas(item, subtotal);
+    const total = subtotal + taxas;
+
+    let icone = '';
+    let detalhe = '';
+    let precoLabel = '';
+    let taxasLabel = '';
+    let taxasTexto = '';
+    let extraLabel = '';
+    let extraTexto = '';
+    let nota = '';
+
+    if (item.tipo === 'hotel') {
+      icone = '★'.repeat(Number(item.estrelas));
+
+      detalhe = `
+        ${item.destino}<br>
+        ${formatarData(entrada)} – ${formatarData(saida)} · ${noites} noite${noites !== 1 ? 's' : ''}<br>
+        ${pessoas} pessoa${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${noites} noite${noites !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas e impostos';
+      taxasTexto = formatarMoeda(taxas);
+      extraLabel = 'Serviços';
+      extraTexto = 'incluídos';
+      nota = 'Cancelamento gratuito até 48h antes do check-in.<br>Sem taxas ocultas.';
+    }
+
+    if (item.tipo === 'voo') {
+      icone = '✈';
+
+      detalhe = `
+        ${item.origem} para ${item.destino}<br>
+        ${formatarData(entrada)}<br>
+        ${pessoas} passageiro${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${pessoas} passageiro${pessoas !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas aeroportuárias';
+      taxasTexto = 'incluídas';
+      extraLabel = 'Bagagem';
+      extraTexto = 'incluída';
+      nota = 'Alterações sujeitas às condições da companhia aérea.<br>Sem taxas ocultas.';
+    }
+
+    if (item.tipo === 'evento') {
+      icone = '🎟';
+
+      detalhe = `
+        ${item.destino}<br>
+        ${formatarData(entrada)}<br>
+        ${pessoas} bilhete${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${pessoas} bilhete${pessoas !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas de serviço';
+      taxasTexto = 'incluídas';
+      extraLabel = 'Tipo de entrada';
+      extraTexto = 'geral';
+      nota = 'Bilhete válido apenas para a data indicada.<br>Sem taxas ocultas.';
+    }
+
+    document.getElementById('reserva-icone').textContent = icone;
+    document.getElementById('reserva-titulo').textContent = item.nome;
+    document.getElementById('reserva-detalhe').innerHTML = detalhe;
+
+    document.getElementById('reserva-preco-label').textContent = precoLabel;
+    document.getElementById('reserva-subtotal').textContent = formatarMoeda(subtotal);
+
+    document.getElementById('reserva-taxas-label').textContent = taxasLabel;
+    document.getElementById('reserva-taxas').textContent = taxasTexto;
+
+    document.getElementById('reserva-extra-label').textContent = extraLabel;
+    document.getElementById('reserva-extra').textContent = extraTexto;
+
+    document.getElementById('reserva-total').textContent = formatarMoeda(total);
+    document.getElementById('reserva-nota').innerHTML = nota;
+  }
+
+  atualizarResumoReserva();
 </script>
 
 </body>

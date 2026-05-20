@@ -285,17 +285,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function criarUrlReserva(item) {
-        const reservaParams = new URLSearchParams();
+    const reservaParams = new URLSearchParams();
 
-        reservaParams.set('id', item.id);
-        reservaParams.set('tipo', item.tipo);
-        reservaParams.set('pessoas', pesquisa.pessoas);
+    reservaParams.set('id', item.id);
+    reservaParams.set('tipo', item.tipo);
+    reservaParams.set('pessoas', pesquisa.pessoas);
 
-        if (pesquisa.entrada) reservaParams.set('entrada', pesquisa.entrada);
-        if (pesquisa.saida) reservaParams.set('saida', pesquisa.saida);
+    if (pesquisa.entrada) reservaParams.set('entrada', pesquisa.entrada);
+    if (pesquisa.saida) reservaParams.set('saida', pesquisa.saida);
 
-        return `reserva.html?${reservaParams.toString()}`;
-    }
+    if (item.destino) reservaParams.set('destino', item.destino);
+    if (item.origem) reservaParams.set('origem', item.origem);
+
+    return `reserva.html?${reservaParams.toString()}`;
+}
 
     function itemCorrespondePesquisa(item) {
         const tipoMatch = !pesquisa.tipo || item.tipo === pesquisa.tipo;
