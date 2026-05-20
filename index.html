@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAVI Reservas</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">LAVI Reservas</div>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="resultados.html">Pesquisar</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Reserve com confiança</h1>
+      <p>Hotéis, voos e eventos numa só plataforma.</p>
+    </section>
+
+    <section class="pesquisa">
+      <h2>Pesquisar reserva</h2>
+
+      <form action="resultados.html" method="get">
+        <label>
+          Tipo de reserva
+          <select name="tipo">
+            <option>Hotel</option>
+            <option>Voo</option>
+            <option>Evento</option>
+          </select>
+        </label>
+
+        <label>
+          Destino
+          <input type="text" name="destino" placeholder="Lisboa, Portugal">
+        </label>
+
+        <label>
+          Data de entrada
+          <input type="date" name="entrada">
+        </label>
+
+        <label>
+          Data de saída
+          <input type="date" name="saida">
+        </label>
+
+        <label>
+          Pessoas
+          <input type="number" name="pessoas" min="1" value="1">
+        </label>
+
+        <button type="submit">Pesquisar</button>
+      </form>
+    </section>
+
+    <section class="destaques">
+      <h2>Ofertas em destaque</h2>
+
+      <div class="cards">
+        <article class="card">
+          <img src="images/hotel.jpg" alt="Hotel em Lisboa">
+          <h3>Hotel Avenida Palace</h3>
+          <p>Lisboa · a partir de 195€/noite</p>
+          <a href="reserva.html">Reservar</a>
+        </article>
+
+        <article class="card">
+          <img src="images/voo.jpg" alt="Voo para Barcelona">
+          <h3>LIS → BCN</h3>
+          <p>TAP Air Portugal · a partir de 89€</p>
+          <a href="reserva.html">Reservar</a>
+        </article>
+
+        <article class="card">
+          <img src="images/evento.jpg" alt="Evento em Lisboa">
+          <h3>Festival NOS Alive</h3>
+          <p>Lisboa · a partir de 75€</p>
+          <a href="reserva.html">Reservar</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 LAVI Reservas · Termos · Privacidade · Contactos</p>
+  </footer>
+
+</body>
+</html>
