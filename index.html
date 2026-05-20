@@ -39,7 +39,18 @@
 
         <label>
           Destino
-          <input type="text" name="destino" placeholder="Lisboa, Portugal">
+          <div class="autocomplete-container">
+
+		<input
+			type="text"
+			id="destino"
+			name="destino"
+			placeholder="Lisboa, Portugal"
+			autocomplete="off">
+
+  <div id="sugestoes"></div>
+
+</div>
         </label>
 
         <label>
@@ -92,6 +103,8 @@
   <footer>
     <p>© 2026 LAVI Reservas · Termos · Privacidade · Contactos</p>
   </footer>
+
+  <script src="scripts/script.js"></script>
 
 </body>
 </html>
