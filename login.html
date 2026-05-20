@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LAVI Reservas — Login</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/style.css" />
+
   <style>
-    /* ── Variáveis ── */
     :root {
       --azul:       #1a6bcc;
       --azul-hover: #155bb0;
@@ -19,11 +20,17 @@
       --cinza-borda:#d8dde6;
       --cinza-texto:#6b7280;
       --texto:      #1a1f2e;
+      --verde:      #16a34a;
+      --vermelho:   #dc2626;
       --sombra:     0 4px 24px rgba(0,0,0,0.08);
       --radius:     12px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -34,7 +41,6 @@
       flex-direction: column;
     }
 
-    /* ── Navbar ── */
     nav {
       background: var(--branco);
       border-bottom: 1px solid var(--cinza-borda);
@@ -62,7 +68,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── Layout principal ── */
     main {
       flex: 1;
       display: flex;
@@ -91,10 +96,9 @@
     .login-card .subtitulo {
       color: var(--cinza-texto);
       font-size: 0.9rem;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
-    /* ── Formulário ── */
     .campo {
       display: flex;
       flex-direction: column;
@@ -129,12 +133,15 @@
       color: #b0b8c9;
     }
 
-    /* Linha "lembrar + esqueci" */
+    .hidden {
+      display: none;
+    }
+
     .opcoes-login {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       font-size: 0.85rem;
     }
 
@@ -158,9 +165,33 @@
       font-weight: 500;
     }
 
-    .esqueci:hover { text-decoration: underline; }
+    .esqueci:hover {
+      text-decoration: underline;
+    }
 
-    /* Botão principal */
+    .mensagem {
+      display: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+      line-height: 1.4;
+    }
+
+    .mensagem.erro {
+      display: block;
+      background: #fee2e2;
+      color: var(--vermelho);
+      border: 1px solid #fecaca;
+    }
+
+    .mensagem.sucesso {
+      display: block;
+      background: #dcfce7;
+      color: var(--verde);
+      border: 1px solid #bbf7d0;
+    }
+
     .btn-login {
       width: 100%;
       height: 46px;
@@ -176,9 +207,10 @@
       margin-bottom: 20px;
     }
 
-    .btn-login:hover { background: var(--azul-hover); }
+    .btn-login:hover {
+      background: var(--azul-hover);
+    }
 
-    /* Divisor */
     .divisor {
       display: flex;
       align-items: center;
@@ -196,9 +228,11 @@
       background: var(--cinza-borda);
     }
 
-    .divisor span { color: var(--cinza-texto); white-space: nowrap; }
+    .divisor span {
+      color: var(--cinza-texto);
+      white-space: nowrap;
+    }
 
-    /* Botão criar conta */
     .btn-criar {
       width: 100%;
       height: 46px;
@@ -222,60 +256,296 @@
       color: var(--branco);
     }
 
-    /* ── Responsividade ── */
     @media (max-width: 480px) {
-      nav { padding: 0 16px; }
+      nav {
+        padding: 0 16px;
+      }
 
       .login-card {
         padding: 36px 24px;
         border-radius: 10px;
       }
 
-      .login-card h1 { font-size: 1.5rem; }
+      .login-card h1 {
+        font-size: 1.5rem;
+      }
+
+      .opcoes-login {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
   <nav>
     <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
   </nav>
 
-  <!-- Conteúdo -->
   <main>
     <div class="login-card">
-      <h1>Bem-vindo de volta</h1>
-      <p class="subtitulo">Inicia sessão para aceder às tuas reservas</p>
+      <h1 id="titulo-auth">Bem-vindo de volta</h1>
+      <p class="subtitulo" id="subtitulo-auth">
+        Inicia sessão para aceder às tuas reservas
+      </p>
 
-      <!-- Formulário de login -->
-      <div class="campo">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required />
+      <form id="auth-form">
+        <div class="campo hidden" id="campo-nome">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="O teu nome" />
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="exemplo@email.com" required />
+        </div>
+
+        <div class="campo">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="A tua password" required />
+        </div>
+
+        <div class="campo hidden" id="campo-confirmar-password">
+          <label for="confirmar-password">Confirmar password</label>
+          <input type="password" id="confirmar-password" name="confirmar-password" placeholder="Repete a password" />
+        </div>
+
+        <div class="opcoes-login" id="opcoes-login">
+          <label>
+            <input type="checkbox" id="lembrar" name="lembrar" />
+            Lembrar-me
+          </label>
+
+          <a href="#" class="esqueci" id="esqueci-password">Esqueceste a password?</a>
+        </div>
+
+        <div class="mensagem" id="mensagem-auth"></div>
+
+        <button type="submit" class="btn-login" id="btn-submit">
+          Iniciar sessão
+        </button>
+      </form>
+
+      <div class="divisor">
+        <span>ou</span>
       </div>
 
-      <div class="campo">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="A tua password" required />
-      </div>
-
-      <div class="opcoes-login">
-        <label>
-          <input type="checkbox" name="lembrar" />
-          Lembrar-me
-        </label>
-        <a href="#" class="esqueci">Esqueceste a password?</a>
-      </div>
-
-      <button type="button" class="btn-login" onclick="window.location.href='historico.html'">
-        Iniciar sessão
+      <button type="button" class="btn-criar" id="btn-toggle-mode">
+        Criar conta
       </button>
-
-      <div class="divisor"><span>ou</span></div>
-
-      <a href="#" class="btn-criar">Criar conta</a>
     </div>
   </main>
+
+  <script>
+    const USERS_KEY = 'lavi_users';
+    const CURRENT_USER_KEY = 'lavi_current_user';
+
+    const form = document.getElementById('auth-form');
+    const titulo = document.getElementById('titulo-auth');
+    const subtitulo = document.getElementById('subtitulo-auth');
+    const campoNome = document.getElementById('campo-nome');
+    const campoConfirmarPassword = document.getElementById('campo-confirmar-password');
+    const inputNome = document.getElementById('nome');
+    const inputEmail = document.getElementById('email');
+    const inputPassword = document.getElementById('password');
+    const inputConfirmarPassword = document.getElementById('confirmar-password');
+    const inputLembrar = document.getElementById('lembrar');
+    const opcoesLogin = document.getElementById('opcoes-login');
+    const mensagem = document.getElementById('mensagem-auth');
+    const btnSubmit = document.getElementById('btn-submit');
+    const btnToggleMode = document.getElementById('btn-toggle-mode');
+
+    let modoCriarConta = false;
+
+    function obterUtilizadores() {
+      const dados = localStorage.getItem(USERS_KEY);
+
+      if (!dados) {
+        return [];
+      }
+
+      try {
+        return JSON.parse(dados);
+      } catch {
+        return [];
+      }
+    }
+
+    function guardarUtilizadores(utilizadores) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(utilizadores));
+    }
+
+    function normalizarEmail(email) {
+      return String(email).trim().toLowerCase();
+    }
+
+    function mostrarMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = `mensagem ${tipo}`;
+    }
+
+    function limparMensagem() {
+      mensagem.textContent = '';
+      mensagem.className = 'mensagem';
+    }
+
+    function guardarSessao(utilizador, lembrar) {
+      const dadosSessao = {
+        id: utilizador.id,
+        nome: utilizador.nome,
+        email: utilizador.email
+      };
+
+      localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(dadosSessao));
+
+      if (!lembrar) {
+        sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(dadosSessao));
+      }
+    }
+
+    function mudarModo(criarConta) {
+      modoCriarConta = criarConta;
+
+      limparMensagem();
+      form.reset();
+
+      if (modoCriarConta) {
+        titulo.textContent = 'Criar conta';
+        subtitulo.textContent = 'Cria uma conta para poderes aceder às tuas reservas';
+
+        campoNome.classList.remove('hidden');
+        campoConfirmarPassword.classList.remove('hidden');
+        opcoesLogin.classList.add('hidden');
+
+        inputNome.required = true;
+        inputConfirmarPassword.required = true;
+
+        btnSubmit.textContent = 'Criar conta';
+        btnToggleMode.textContent = 'Já tenho conta';
+      } else {
+        titulo.textContent = 'Bem-vindo de volta';
+        subtitulo.textContent = 'Inicia sessão para aceder às tuas reservas';
+
+        campoNome.classList.add('hidden');
+        campoConfirmarPassword.classList.add('hidden');
+        opcoesLogin.classList.remove('hidden');
+
+        inputNome.required = false;
+        inputConfirmarPassword.required = false;
+
+        btnSubmit.textContent = 'Iniciar sessão';
+        btnToggleMode.textContent = 'Criar conta';
+      }
+    }
+
+    function criarConta() {
+      const nome = inputNome.value.trim();
+      const email = normalizarEmail(inputEmail.value);
+      const password = inputPassword.value;
+      const confirmarPassword = inputConfirmarPassword.value;
+
+      if (!nome || !email || !password || !confirmarPassword) {
+        mostrarMensagem('Preenche todos os campos para criar a conta.', 'erro');
+        return;
+      }
+
+      if (password.length < 4) {
+        mostrarMensagem('A password deve ter pelo menos 4 caracteres.', 'erro');
+        return;
+      }
+
+      if (password !== confirmarPassword) {
+        mostrarMensagem('As passwords não coincidem.', 'erro');
+        return;
+      }
+
+      const utilizadores = obterUtilizadores();
+
+      const emailJaExiste = utilizadores.some(user => user.email === email);
+
+      if (emailJaExiste) {
+        mostrarMensagem('Já existe uma conta com este e-mail. Inicia sessão.', 'erro');
+        return;
+      }
+
+      const novoUtilizador = {
+        id: Date.now(),
+        nome,
+        email,
+        password
+      };
+
+      utilizadores.push(novoUtilizador);
+      guardarUtilizadores(utilizadores);
+      guardarSessao(novoUtilizador, true);
+
+      mostrarMensagem('Conta criada com sucesso. A redirecionar...', 'sucesso');
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 700);
+    }
+
+    function iniciarSessao() {
+      const email = normalizarEmail(inputEmail.value);
+      const password = inputPassword.value;
+
+      if (!email || !password) {
+        mostrarMensagem('Insere o e-mail e a password.', 'erro');
+        return;
+      }
+
+      const utilizadores = obterUtilizadores();
+
+      const utilizador = utilizadores.find(user => user.email === email);
+
+      if (!utilizador) {
+        mostrarMensagem('Esta conta ainda não existe. Cria uma conta primeiro.', 'erro');
+        return;
+      }
+
+      if (utilizador.password !== password) {
+        mostrarMensagem('Password incorreta.', 'erro');
+        return;
+      }
+
+      guardarSessao(utilizador, inputLembrar.checked);
+
+      mostrarMensagem('Sessão iniciada com sucesso. A redirecionar...', 'sucesso');
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 700);
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (modoCriarConta) {
+        criarConta();
+      } else {
+        iniciarSessao();
+      }
+    });
+
+    btnToggleMode.addEventListener('click', () => {
+      mudarModo(!modoCriarConta);
+    });
+
+    document.getElementById('esqueci-password').addEventListener('click', (event) => {
+      event.preventDefault();
+      mostrarMensagem('Como este projeto usa uma pseudo-base local, ainda não existe recuperação real de password.', 'erro');
+    });
+
+    const parametros = new URLSearchParams(window.location.search);
+
+    if (parametros.get('mode') === 'register' || parametros.get('modo') === 'criar') {
+      mudarModo(true);
+    }
+  </script>
 
 </body>
 </html>

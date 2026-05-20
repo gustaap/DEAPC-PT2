@@ -395,6 +395,84 @@
 
       .banner-cta { flex-direction: column; gap: 10px; align-items: flex-start; }
     }
+    .secao-conteudo {
+      display: none;
+    }
+
+    .secao-conteudo.visivel {
+      display: block;
+    }
+
+    .perfil-card,
+    .info-card {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .perfil-card h2,
+    .info-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .linha-info {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 10px 0;
+      font-size: 0.9rem;
+    }
+
+    .linha-info span:first-child {
+      color: var(--cinza-texto);
+    }
+
+    .linha-info span:last-child {
+      font-weight: 600;
+    }
+
+    .empty-state {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 28px;
+      color: var(--cinza-texto);
+      font-size: 0.9rem;
+    }
+
+    .sidebar-menu li button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      text-decoration: none;
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sidebar-menu li button:hover {
+      background: var(--cinza-claro);
+      color: var(--texto);
+    }
+
+    .sidebar-menu li.ativo button {
+      background: #e8f0fb;
+      color: var(--azul);
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -402,9 +480,10 @@
   <!-- Navbar -->
   <nav>
     <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
+
     <div class="nav-utilizador">
-      <span>Olá, <strong>João</strong> ▾</span>
-      <a href="login.html" class="btn-sair">Sair</a>
+      <span>Olá, <strong id="nav-user-name">Utilizador</strong> ▾</span>
+      <a href="#" class="btn-sair logout-btn">Sair</a>
     </div>
   </nav>
 
@@ -414,133 +493,374 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="perfil-topo">
-        <div class="avatar">JS</div>
+        <div class="avatar" id="perfil-avatar">--</div>
+
         <div class="perfil-info">
-          <div class="nome">João Silva</div>
-          <div class="email">joao@email.com</div>
+          <div class="nome" id="perfil-nome">A carregar...</div>
+          <div class="email" id="perfil-email">A carregar...</div>
           <div class="badge-verificado">✓ Cliente verificado</div>
         </div>
       </div>
 
       <ul class="sidebar-menu">
-        <li><a href="#"><span class="icone"></span> Perfil</a></li>
-        <li class="ativo"><a href="historico.html"><span class="icone"></span> Minhas Reservas</a></li>
         <li>
-          <a href="#">
-            <span class="icone"></span> Notificações
-            <span class="badge-notif">1</span>
-          </a>
+          <button type="button" class="sidebar-btn" data-section="perfil">
+            <span class="icone">👤</span> Perfil
+          </button>
         </li>
-        <li><a href="#"><span class="icone"></span> Pagamentos</a></li>
-        <li><a href="#"><span class="icone"></span> Favoritos</a></li>
+
+        <li class="ativo">
+          <button type="button" class="sidebar-btn" data-section="reservas">
+            <span class="icone">📋</span> Minhas Reservas
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="sidebar-btn" data-section="notificacoes">
+            <span class="icone">🔔</span> Notificações
+            <span class="badge-notif">1</span>
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="sidebar-btn" data-section="pagamentos">
+            <span class="icone">💳</span> Pagamentos
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="sidebar-btn" data-section="favoritos">
+            <span class="icone">⭐</span> Favoritos
+          </button>
+        </li>
       </ul>
 
       <div class="sidebar-separador"></div>
-      <a href="login.html" class="btn-terminar"><span class="icone"></span> Terminar sessão</a>
+      <a href="#" class="btn-terminar logout-btn">
+        <span class="icone"></span> Terminar sessão
+      </a>
     </aside>
 
     <!-- Conteúdo -->
     <div class="conteudo">
-      <h1>Minhas Reservas</h1>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab ativa" onclick="mostrarTab('ativas', this)">Ativas (2)</button>
-        <button class="tab" onclick="mostrarTab('passadas', this)">Passadas (0)</button>
-        <button class="tab" onclick="mostrarTab('canceladas', this)">Canceladas (1)</button>
-      </div>
+  <!-- PERFIL -->
+      <section id="secao-perfil" class="secao-conteudo">
+        <h1>Perfil</h1>
 
-      <!-- Painel: Ativas -->
-      <div id="painel-ativas" class="painel visivel">
+        <div class="perfil-card">
+          <h2>Dados da conta</h2>
 
-        <!-- Card Hotel -->
-        <div class="card-reserva">
-          <div class="card-foto">[foto hotel]</div>
-          <div class="card-info">
-            <div class="titulo">Hotel Avenida Palace</div>
-            <div class="estrelas">★★★★★</div>
-            <div class="detalhe">📅 15 Jun – 20 Jun 2026 · Lisboa · 2 adultos</div>
-            <div class="detalhe">Quarto duplo superior · Inclui pequeno-almoço</div>
-            <div class="ref">Ref. RES-20260512-001</div>
+          <div class="linha-info">
+            <span>Nome</span>
+            <span id="perfil-pagina-nome">A carregar...</span>
           </div>
-          <div class="card-direito">
-            <span class="badge-estado badge-ativa">● Ativa</span>
-            <div class="card-preco">1.062,75 €</div>
-            <div class="card-acoes">
-              <a href="#">Ver detalhes</a>
-              <a href="#">Download voucher</a>
-              <a href="#" class="cancelar">Cancelar</a>
+
+          <div class="linha-info">
+            <span>E-mail</span>
+            <span id="perfil-pagina-email">A carregar...</span>
+          </div>
+
+          <div class="linha-info">
+            <span>Estado da conta</span>
+            <span>Cliente verificado</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2>Preferências</h2>
+
+          <div class="linha-info">
+            <span>Idioma</span>
+            <span>Português</span>
+          </div>
+
+          <div class="linha-info">
+            <span>Moeda</span>
+            <span>Euro (€)</span>
+          </div>
+        </div>
+      </section>
+
+  <!-- RESERVAS -->
+      <section id="secao-reservas" class="secao-conteudo visivel">
+        <h1 id="titulo-pagina">Minhas Reservas</h1>
+
+        <div class="tabs">
+          <button class="tab ativa" onclick="mostrarTab('ativas', this)">Ativas (2)</button>
+          <button class="tab" onclick="mostrarTab('passadas', this)">Passadas (0)</button>
+          <button class="tab" onclick="mostrarTab('canceladas', this)">Canceladas (1)</button>
+        </div>
+
+        <div id="painel-ativas" class="painel visivel">
+
+          <div class="card-reserva">
+            <div class="card-foto">[foto hotel]</div>
+
+            <div class="card-info">
+              <div class="titulo">Hotel Avenida Palace</div>
+              <div class="estrelas">★★★★★</div>
+              <div class="detalhe">📅 15 Jun – 20 Jun 2026 · Lisboa · 2 adultos</div>
+              <div class="detalhe">Quarto duplo superior · Inclui pequeno-almoço</div>
+              <div class="ref">Ref. RES-20260512-001</div>
+            </div>
+
+            <div class="card-direito">
+              <span class="badge-estado badge-ativa">● Ativa</span>
+              <div class="card-preco">1.062,75 €</div>
+
+              <div class="card-acoes">
+                <a href="#">Ver detalhes</a>
+                <a href="#">Download voucher</a>
+                <a href="#" class="cancelar">Cancelar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-reserva">
+            <div class="card-foto">[logo TAP]</div>
+
+            <div class="card-info">
+              <div class="titulo">Voo TP401 — LIS → BCN</div>
+              <div class="detalhe">✈️ 16 Jun 2026 · 07:40 – 09:55 · TAP Air Portugal</div>
+              <div class="detalhe">Classe Económica · 1 bagagem de mão</div>
+              <div class="ref">Ref. RES-20260512-002</div>
+            </div>
+
+            <div class="card-direito">
+              <span class="badge-estado badge-ativa">● Ativa</span>
+              <div class="card-preco">145,00 €</div>
+
+              <div class="card-acoes">
+                <a href="#">Ver detalhes</a>
+                <a href="#">Download bilhete</a>
+                <a href="#" class="cancelar">Cancelar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="banner-cta">
+            <p>Planear a próxima viagem?</p>
+            <a href="index.html">Pesquisar hotéis, voos e eventos →</a>
+          </div>
+        </div>
+
+        <div id="painel-passadas" class="painel">
+          <p style="color:var(--cinza-texto); font-size:0.9rem; padding: 20px 0;">
+            Não tens reservas passadas.
+          </p>
+        </div>
+
+        <div id="painel-canceladas" class="painel">
+          <div class="card-reserva">
+            <div class="card-foto">[foto hotel]</div>
+
+            <div class="card-info">
+              <div class="titulo">Hotel Bairro Alto</div>
+              <div class="estrelas">★★★★</div>
+              <div class="detalhe">📅 10 Mai – 12 Mai 2026 · Lisboa · 1 adulto</div>
+              <div class="ref">Ref. RES-20260410-003</div>
+            </div>
+
+            <div class="card-direito">
+              <span class="badge-estado badge-cancelada">✕ Cancelada</span>
+              <div class="card-preco">178,00 €</div>
+
+              <div class="card-acoes">
+                <a href="#">Ver detalhes</a>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Card Voo -->
-        <div class="card-reserva">
-          <div class="card-foto">[logo TAP]</div>
-          <div class="card-info">
-            <div class="titulo">Voo TP401 — LIS → BCN</div>
-            <div class="detalhe">✈️ 16 Jun 2026 · 07:40 – 09:55 · TAP Air Portugal</div>
-            <div class="detalhe">Classe Económica · 1 bagagem de mão</div>
-            <div class="ref">Ref. RES-20260512-002</div>
+      <!-- NOTIFICAÇÕES -->
+      <section id="secao-notificacoes" class="secao-conteudo">
+        <h1>Notificações</h1>
+
+        <div class="info-card">
+          <h2>Nova notificação</h2>
+          <p style="color: var(--cinza-texto); font-size: 0.9rem;">
+            A tua reserva no Hotel Avenida Palace está confirmada.
+          </p>
+        </div>
+      </section>
+
+      <!-- PAGAMENTOS -->
+      <section id="secao-pagamentos" class="secao-conteudo">
+        <h1>Pagamentos</h1>
+
+        <div class="info-card">
+          <h2>Métodos de pagamento</h2>
+
+          <div class="linha-info">
+            <span>Cartão principal</span>
+            <span>**** **** **** 3456</span>
           </div>
-          <div class="card-direito">
-            <span class="badge-estado badge-ativa">● Ativa</span>
-            <div class="card-preco">145,00 €</div>
-            <div class="card-acoes">
-              <a href="#">Ver detalhes</a>
-              <a href="#">Download bilhete</a>
-              <a href="#" class="cancelar">Cancelar</a>
-            </div>
+
+          <div class="linha-info">
+            <span>Último pagamento</span>
+            <span>1.062,75 €</span>
+          </div>
+
+          <div class="linha-info">
+            <span>Estado</span>
+            <span>Pago</span>
           </div>
         </div>
+      </section>
 
-        <!-- Banner CTA -->
-        <div class="banner-cta">
-          <p>Planear a próxima viagem?</p>
-          <a href="index.html">Pesquisar hotéis, voos e eventos →</a>
+      <!-- FAVORITOS -->
+      <section id="secao-favoritos" class="secao-conteudo">
+        <h1>Favoritos</h1>
+
+        <div class="empty-state">
+          Ainda não tens favoritos guardados.
+          <br>
+          Podes adicionar hotéis, voos ou eventos aos favoritos futuramente.
         </div>
-      </div>
+      </section>
 
-      <!-- Painel: Passadas -->
-      <div id="painel-passadas" class="painel">
-        <p style="color:var(--cinza-texto); font-size:0.9rem; padding: 20px 0;">Não tens reservas passadas.</p>
-      </div>
-
-      <!-- Painel: Canceladas -->
-      <div id="painel-canceladas" class="painel">
-        <div class="card-reserva">
-          <div class="card-foto">[foto hotel]</div>
-          <div class="card-info">
-            <div class="titulo">Hotel Bairro Alto</div>
-            <div class="estrelas">★★★★</div>
-            <div class="detalhe">📅 10 Mai – 12 Mai 2026 · Lisboa · 1 adulto</div>
-            <div class="ref">Ref. RES-20260410-003</div>
-          </div>
-          <div class="card-direito">
-            <span class="badge-estado badge-cancelada">✕ Cancelada</span>
-            <div class="card-preco">178,00 €</div>
-            <div class="card-acoes">
-              <a href="#">Ver detalhes</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /conteudo -->
+    </div>
   </div><!-- /pagina -->
 
   <script>
-    function mostrarTab(id, btn) {
-      // Esconde todos os painéis
-      document.querySelectorAll('.painel').forEach(p => p.classList.remove('visivel'));
-      // Remove ativa de todos os botões
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativa'));
-      // Mostra o painel certo
-      document.getElementById('painel-' + id).classList.add('visivel');
-      // Marca o botão
-      btn.classList.add('ativa');
+  function mostrarTab(id, btn) {
+    document.querySelectorAll('.painel').forEach(p => p.classList.remove('visivel'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativa'));
+
+    document.getElementById('painel-' + id).classList.add('visivel');
+    btn.classList.add('ativa');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const CURRENT_USER_KEY = 'lavi_current_user';
+
+    function lerJSON(storage, key) {
+      try {
+        const dados = storage.getItem(key);
+        return dados ? JSON.parse(dados) : null;
+      } catch {
+        return null;
+      }
     }
-  </script>
+
+    function obterUtilizadorAtual() {
+      return (
+        lerJSON(localStorage, CURRENT_USER_KEY) ||
+        lerJSON(sessionStorage, CURRENT_USER_KEY)
+      );
+    }
+
+    function obterPrimeiroNome(utilizador) {
+      const nome = utilizador.nome || utilizador.email || 'Utilizador';
+      return nome.trim().split(/\s+/)[0];
+    }
+
+    function obterIniciais(utilizador) {
+      const base = utilizador.nome || utilizador.email || 'Utilizador';
+      const partes = base.trim().split(/\s+/);
+
+      if (partes.length === 1) {
+        return partes[0].slice(0, 2).toUpperCase();
+      }
+
+      return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
+    }
+
+    function terminarSessao(event) {
+      event.preventDefault();
+
+      localStorage.removeItem(CURRENT_USER_KEY);
+      sessionStorage.removeItem(CURRENT_USER_KEY);
+
+      window.location.href = 'index.html';
+    }
+
+    function mostrarSecao(secao) {
+      document.querySelectorAll('.secao-conteudo').forEach(section => {
+        section.classList.remove('visivel');
+      });
+
+      const secaoEscolhida = document.getElementById(`secao-${secao}`);
+
+      if (secaoEscolhida) {
+        secaoEscolhida.classList.add('visivel');
+      }
+
+      document.querySelectorAll('.sidebar-menu li').forEach(li => {
+        li.classList.remove('ativo');
+      });
+
+      const botaoAtivo = document.querySelector(`.sidebar-btn[data-section="${secao}"]`);
+
+      if (botaoAtivo) {
+        botaoAtivo.closest('li').classList.add('ativo');
+      }
+    }
+
+    const utilizador = obterUtilizadorAtual();
+
+    if (!utilizador || !utilizador.email) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const primeiroNome = obterPrimeiroNome(utilizador);
+    const nomeCompleto = utilizador.nome || primeiroNome;
+    const email = utilizador.email;
+    const iniciais = obterIniciais(utilizador);
+
+    const navUserName = document.getElementById('nav-user-name');
+    const perfilAvatar = document.getElementById('perfil-avatar');
+    const perfilNome = document.getElementById('perfil-nome');
+    const perfilEmail = document.getElementById('perfil-email');
+    const tituloPagina = document.getElementById('titulo-pagina');
+
+    const perfilPaginaNome = document.getElementById('perfil-pagina-nome');
+    const perfilPaginaEmail = document.getElementById('perfil-pagina-email');
+
+    if (navUserName) {
+      navUserName.textContent = primeiroNome;
+    }
+
+    if (perfilAvatar) {
+      perfilAvatar.textContent = iniciais;
+    }
+
+    if (perfilNome) {
+      perfilNome.textContent = nomeCompleto;
+    }
+
+    if (perfilEmail) {
+      perfilEmail.textContent = email;
+    }
+
+    if (tituloPagina) {
+      tituloPagina.textContent = `Reservas de ${primeiroNome}`;
+    }
+
+    if (perfilPaginaNome) {
+      perfilPaginaNome.textContent = nomeCompleto;
+    }
+
+    if (perfilPaginaEmail) {
+      perfilPaginaEmail.textContent = email;
+    }
+
+    document.querySelectorAll('.logout-btn').forEach(btn => {
+      btn.addEventListener('click', terminarSessao);
+    });
+
+    document.querySelectorAll('.sidebar-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        mostrarSecao(btn.dataset.section);
+      });
+    });
+
+    mostrarSecao('reservas');
+  });
+</script>
 
 </body>
 </html>

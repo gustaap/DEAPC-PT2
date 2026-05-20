@@ -19,7 +19,7 @@
 
     <nav class="nav">
       <a class="nav-btn" href="index.html">Início</a>
-      <a class="nav-btn login-btn" href="login.html">Login</a>
+      <a class="nav-btn login-btn" id="auth-nav-btn" href="login.html">Login</a>
     </nav>
   </header>
 
@@ -109,7 +109,118 @@
     <p>© 2026 LAVI Reservas · Termos · Privacidade · Contactos</p>
   </footer>
 
-  <script src="scripts/script.js"></script>
+<script src="scripts/script.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.pesquisa form');
+    const entradaInput = document.getElementById('entrada');
+    const saidaInput = document.getElementById('saida');
+    const authBtn = document.getElementById('auth-nav-btn');
+
+    // ==========================================
+    // 1. Login button becomes Perfil if logged in
+    // ==========================================
+    let utilizador = null;
+
+    try {
+      utilizador =
+        JSON.parse(localStorage.getItem('lavi_current_user')) ||
+        JSON.parse(sessionStorage.getItem('lavi_current_user'));
+    } catch {
+      utilizador = null;
+    }
+
+    if (authBtn) {
+      if (utilizador && utilizador.email) {
+        authBtn.textContent = 'Perfil';
+        authBtn.href = 'historico.html';
+        authBtn.title = `Sessão iniciada como ${utilizador.email}`;
+      } else {
+        authBtn.textContent = 'Login';
+        authBtn.href = 'login.html';
+        authBtn.title = 'Iniciar sessão';
+      }
+    }
+
+    // ==========================================
+    // 2. Optional: refill form if returning from Editar
+    // ==========================================
+    const params = new URLSearchParams(window.location.search);
+
+    const tipoParam = params.get('tipo');
+    const destinoParam = params.get('destino');
+    const entradaParam = params.get('entrada');
+    const saidaParam = params.get('saida');
+    const pessoasParam = params.get('pessoas');
+
+    if (tipoParam && document.getElementById('tipo')) {
+      document.getElementById('tipo').value = tipoParam;
+    }
+
+    if (destinoParam && document.getElementById('destino')) {
+      document.getElementById('destino').value = destinoParam;
+    }
+
+    if (entradaParam && entradaInput) {
+      entradaInput.value = entradaParam;
+    }
+
+    if (saidaParam && saidaInput) {
+      saidaInput.value = saidaParam;
+    }
+
+    if (pessoasParam && document.getElementById('pessoas')) {
+      document.getElementById('pessoas').value = pessoasParam;
+    }
+
+    // ==========================================
+    // 3. Data de saída must be after entrada
+    // ==========================================
+    function adicionarUmDia(dataISO) {
+      const data = new Date(dataISO + 'T00:00:00');
+      data.setDate(data.getDate() + 1);
+
+      return data.toISOString().split('T')[0];
+    }
+
+    function atualizarDataMinimaSaida() {
+      if (!entradaInput || !saidaInput || !entradaInput.value) return;
+
+      const dataMinimaSaida = adicionarUmDia(entradaInput.value);
+
+      saidaInput.min = dataMinimaSaida;
+
+      if (saidaInput.value && saidaInput.value <= entradaInput.value) {
+        saidaInput.value = '';
+      }
+    }
+
+    if (entradaInput && saidaInput) {
+      entradaInput.addEventListener('change', atualizarDataMinimaSaida);
+      atualizarDataMinimaSaida();
+    }
+
+    if (form && entradaInput && saidaInput) {
+      form.addEventListener('submit', (event) => {
+        const entrada = entradaInput.value;
+        const saida = saidaInput.value;
+
+        if (!entrada || !saida) {
+          event.preventDefault();
+          alert('Seleciona a data de entrada e a data de saída.');
+          return;
+        }
+
+        if (saida <= entrada) {
+          event.preventDefault();
+          alert('A data de saída tem de ser depois da data de entrada.');
+          saidaInput.focus();
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
