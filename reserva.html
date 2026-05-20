@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAVI Reservas — Reserva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    :root {
+      --azul:       #1a6bcc;
+      --azul-hover: #155bb0;
+      --laranja:    #f57c00;
+      --verde:      #16a34a;
+      --fundo:      #f4f6f9;
+      --branco:     #ffffff;
+      --cinza-borda:#d8dde6;
+      --cinza-texto:#6b7280;
+      --texto:      #1a1f2e;
+      --sombra:     0 4px 24px rgba(0,0,0,0.07);
+      --radius:     12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--texto);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--laranja);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-left: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--texto); }
+
+    .btn-nav-login {
+      padding: 7px 16px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 7px;
+      color: var(--texto) !important;
+      font-weight: 500;
+    }
+
+    .btn-nav-conta {
+      padding: 7px 16px;
+      background: var(--azul);
+      border-radius: 7px;
+      color: var(--branco) !important;
+      font-weight: 600;
+    }
+
+    /* ── Progresso ── */
+    .barra-progresso {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .passos {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .passo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo { color: var(--azul); font-weight: 600; }
+    .passo.feito { color: var(--verde); }
+
+    .passo-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.78rem;
+      border: 2px solid var(--cinza-borda);
+      background: var(--branco);
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo .passo-num {
+      border-color: var(--azul);
+      background: var(--azul);
+      color: var(--branco);
+    }
+
+    .passo.feito .passo-num {
+      border-color: var(--verde);
+      background: var(--verde);
+      color: var(--branco);
+    }
+
+    .passo-linha {
+      width: 48px;
+      height: 2px;
+      background: var(--cinza-borda);
+      margin: 0 8px;
+    }
+
+    /* ── Layout ── */
+    .pagina {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 16px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Secções do formulário ── */
+    .secao {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    .secao h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .secao h2 .num {
+      width: 26px;
+      height: 26px;
+      background: var(--azul);
+      color: var(--branco);
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Grid de campos */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .campo-full { grid-column: 1 / -1; }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .campo label {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    .campo input,
+    .campo select {
+      height: 44px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 0 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: var(--texto);
+      outline: none;
+      background: var(--branco);
+      transition: border-color 0.2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus { border-color: var(--azul); }
+
+    .campo input::placeholder { color: #b0b8c9; }
+
+    /* Métodos de pagamento */
+    .metodos-pag {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metodo {
+      border: 2px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      font-weight: 500;
+    }
+
+    .metodo:hover { border-color: var(--azul); background: #f0f6ff; }
+
+    .metodo.selecionado {
+      border-color: var(--azul);
+      background: #e8f0fb;
+      color: var(--azul);
+    }
+
+    .metodo .icone-pag { font-size: 1.6rem; }
+
+    /* Cartão de crédito */
+    .form-cartao { display: flex; flex-direction: column; gap: 16px; }
+
+    /* Termos */
+    .termos {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: var(--cinza-texto);
+      margin-top: 4px;
+    }
+
+    .termos input[type="checkbox"] {
+      accent-color: var(--azul);
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .termos a { color: var(--azul); text-decoration: none; }
+    .termos a:hover { text-decoration: underline; }
+
+    /* ── Resumo lateral ── */
+    .resumo {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 24px 22px;
+      position: sticky;
+      top: 80px;
+    }
+
+    .resumo h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item {
+      background: var(--fundo);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item .titulo {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .resumo-item .detalhe {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+    }
+
+    .resumo-item .estrelas { color: var(--laranja); font-size: 0.78rem; }
+
+    .linha-preco {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      color: var(--cinza-texto);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .linha-preco:last-of-type { border-bottom: none; }
+
+    .linha-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 0 4px;
+      color: var(--texto);
+      border-top: 2px solid var(--cinza-borda);
+      margin-top: 4px;
+    }
+
+    .badge-seguro {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--verde);
+      background: #dcfce7;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+
+    .btn-confirmar {
+      width: 100%;
+      height: 48px;
+      background: var(--azul);
+      color: var(--branco);
+      border: none;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-confirmar:hover { background: var(--azul-hover); }
+
+    .nota-cancelamento {
+      font-size: 0.76rem;
+      color: var(--cinza-texto);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ── Responsividade ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .barra-progresso { padding: 12px 16px; }
+      .passo-linha { width: 24px; }
+
+      .pagina {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+
+      .resumo { position: static; }
+
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+      .metodos-pag { grid-template-columns: 1fr 1fr 1fr; }
+
+      .secao { padding: 20px 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .metodos-pag { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
+    <div class="nav-links">
+      <a href="#">Hotéis</a>
+      <a href="#">Voos</a>
+      <a href="#">Eventos</a>
+      <a href="#">Ofertas</a>
+      <a href="login.html" class="btn-nav-login">Login</a>
+      <a href="#" class="btn-nav-conta">Criar conta</a>
+    </div>
+  </nav>
+
+  <!-- Barra de progresso -->
+  <div class="barra-progresso">
+    <div class="passos">
+      <div class="passo feito">
+        <div class="passo-num">✓</div>
+        <span>Pesquisa</span>
+      </div>
+      <div class="passo-linha"></div>
+      <div class="passo feito">
+        <div class="passo-num">✓</div>
+        <span>Seleção</span>
+      </div>
+      <div class="passo-linha"></div>
+      <div class="passo ativo">
+        <div class="passo-num">3</div>
+        <span>Reserva</span>
+      </div>
+      <div class="passo-linha"></div>
+      <div class="passo">
+        <div class="passo-num">4</div>
+        <span>Confirmação</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout -->
+  <div class="pagina">
+
+    <!-- Formulário -->
+    <div class="formulario">
+
+      <!-- Dados do cliente -->
+      <div class="secao">
+        <h2><span class="num">1</span> Dados do cliente</h2>
+        <div class="grid-2">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="João" />
+          </div>
+          <div class="campo">
+            <label for="apelido">Apelido</label>
+            <input type="text" id="apelido" placeholder="Silva" />
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="joao@email.com" />
+          </div>
+          <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" placeholder="+351 912 345 678" />
+          </div>
+          <div class="campo">
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" id="nascimento" />
+          </div>
+          <div class="campo">
+            <label for="nacionalidade">Nacionalidade</label>
+            <select id="nacionalidade">
+              <option value="">Selecionar...</option>
+              <option value="PT">Portugal</option>
+              <option value="ES">Espanha</option>
+              <option value="FR">França</option>
+              <option value="GB">Reino Unido</option>
+              <option value="DE">Alemanha</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="campo campo-full">
+            <label for="pedidos">Pedidos especiais (opcional)</label>
+            <input type="text" id="pedidos" placeholder="Ex: quarto no piso alto, cama extra..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="secao">
+        <h2><span class="num">2</span> Método de pagamento</h2>
+
+        <div class="metodos-pag">
+          <div class="metodo selecionado" onclick="selecionarMetodo(this)">
+            <span class="icone-pag">💳</span>
+            Cartão
+          </div>
+          <div class="metodo" onclick="selecionarMetodo(this)">
+            <span class="icone-pag">🏦</span>
+            MB Way
+          </div>
+          <div class="metodo" onclick="selecionarMetodo(this)">
+            <span class="icone-pag">📄</span>
+            Referência MB
+          </div>
+        </div>
+
+        <div class="form-cartao">
+          <div class="grid-2">
+            <div class="campo campo-full">
+              <label for="num-cartao">Número do cartão</label>
+              <input type="text" id="num-cartao" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+            <div class="campo campo-full">
+              <label for="titular">Nome do titular</label>
+              <input type="text" id="titular" placeholder="JOÃO SILVA" />
+            </div>
+          </div>
+          <div class="grid-3">
+            <div class="campo">
+              <label for="validade">Validade</label>
+              <input type="text" id="validade" placeholder="MM/AA" maxlength="5" />
+            </div>
+            <div class="campo">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" placeholder="123" maxlength="4" />
+            </div>
+          </div>
+        </div>
+
+        <div class="termos" style="margin-top: 20px;">
+          <input type="checkbox" id="termos" />
+          <label for="termos">
+            Li e aceito os <a href="#">Termos e Condições</a> e a
+            <a href="#">Política de Privacidade</a> da LAVI Reservas.
+          </label>
+        </div>
+      </div>
+
+    </div><!-- /formulario -->
+
+    <!-- Resumo lateral -->
+    <aside class="resumo">
+      <h3>Resumo da reserva</h3>
+
+      <div class="resumo-item">
+        <div class="estrelas">★★★★★</div>
+        <div class="titulo">Hotel Avenida Palace</div>
+        <div class="detalhe">
+          Lisboa, Portugal<br />
+          15 Jun – 20 Jun 2026 · 5 noites<br />
+          Quarto duplo superior · 2 adultos<br />
+          Inclui pequeno-almoço
+        </div>
+      </div>
+
+      <div class="linha-preco">
+        <span>195 € × 5 noites</span>
+        <span>975,00 €</span>
+      </div>
+      <div class="linha-preco">
+        <span>Taxas e impostos</span>
+        <span>87,75 €</span>
+      </div>
+      <div class="linha-preco">
+        <span>Pequeno-almoço</span>
+        <span>incluído</span>
+      </div>
+
+      <div class="linha-total">
+        <span>Total</span>
+        <span>1.062,75 €</span>
+      </div>
+
+      <div class="badge-seguro">🔒 Pagamento seguro e encriptado</div>
+
+      <button class="btn-confirmar" onclick="window.location.href='historico.html'">
+        Confirmar reserva
+      </button>
+
+      <p class="nota-cancelamento">
+        Cancelamento gratuito até 48h antes do check-in.<br />
+        Sem taxas ocultas.
+      </p>
+    </aside>
+
+  </div><!-- /pagina -->
+
+  <script>
+    function selecionarMetodo(el) {
+      document.querySelectorAll('.metodo').forEach(m => m.classList.remove('selecionado'));
+      el.classList.add('selecionado');
+    }
+  </script>
+
+</body>
+</html>
