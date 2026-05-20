@@ -26,6 +26,51 @@ body {
   z-index: 100;
 }
 
+.autocomplete-container{
+
+position:relative;
+
+width:100%;
+
+}
+
+#sugestoes{
+
+position:absolute;
+
+top:100%;
+
+left:0;
+
+width:100%;
+
+background:white;
+
+border-radius:10px;
+
+box-shadow:0 4px 12px rgba(0,0,0,0.12);
+
+overflow:hidden;
+
+z-index:1000;
+
+}
+
+.opcao{
+
+padding:12px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.opcao:hover{
+
+background:#eef4ff;
+
+}
 
 .logo {
   font-weight: bold;
