@@ -6,61 +6,119 @@
     <title>LAVI Reservas - Resultados</title>
     <link rel="stylesheet" href="styles/resultados.css">
 </head>
+
 <body>
 
     <header class="main-header">
-        <div class="logo">LAVI <strong>RESERVAS</strong></div>
-        <div class="search-summary">
-            <span style="color: #1a6ef5; margin-right: 8px;">🔍</span> 
-            Lisboa · 15–20 Jun · 2 hóspedes · Hotel
+        <a href="index.html" class="logo">LAVI <strong>RESERVAS</strong></a>
+
+        <div class="search-summary" id="search-summary">
+            <span style="color: #1a6ef5; margin-right: 8px;">🔍</span>
+            A carregar pesquisa...
         </div>
-        <button class="edit-btn">Editar</button>
+
+        <a href="index.html" class="edit-btn" id="edit-search-btn">Editar</a>
     </header>
 
     <nav class="mobile-nav">
-        <button class="chip">Filtros</button>
-        <button class="chip">Preço ↑</button>
-        <button class="chip">📍 Mapa</button>
+        <button class="chip" type="button">Filtros</button>
+        <button class="chip" type="button" id="mobile-sort-btn">Preço ↑</button>
+        <a class="chip" href="#mapa">📍 Mapa</a>
     </nav>
 
     <div class="breadcrumbs">
-        <a href="#">Home</a> › <a href="#">Hotéis</a> › Lisboa
+        <a href="index.html">Home</a>
+        ›
+        <a href="resultados.html" id="breadcrumb-tipo">Resultados</a>
+        ›
+        <span id="breadcrumb-destino">Destino</span>
     </div>
 
     <div class="main-layout">
-        
+
         <aside class="filters-sidebar">
-            <h3>Filtros <button class="reset-btn">Reset</button></h3>
-            
+            <h3>
+                Filtros
+                <button class="reset-btn" type="button">Reset</button>
+            </h3>
+
             <div class="filter-group">
-                <h4>Preço por noite</h4>
-                <input type="range" id="price-slider" min="0" max="1000" value="1000">
-                <label id="price-label" style="text-align: right; display: block; color: #1a6ef5; font-size: 12px; font-weight: bold; margin-top: 5px;">até 1000 €</label>
+                <h4>Preço</h4>
+
+                <input
+                    type="range"
+                    id="price-slider"
+                    min="0"
+                    max="1000"
+                    value="1000">
+
+                <label
+                    id="price-label"
+                    style="text-align: right; display: block; color: #1a6ef5; font-size: 12px; font-weight: bold; margin-top: 5px;">
+                    até 1000 €
+                </label>
             </div>
 
             <div class="filter-group">
                 <h4>Classificação</h4>
-                <label><input type="checkbox" class="star-filter" value="5" checked> ★★★★★</label>
-                <label><input type="checkbox" class="star-filter" value="4" checked> ★★★★</label>
-                <label><input type="checkbox" class="star-filter" value="3" checked> ★★★</label>
+
+                <label>
+                    <input type="checkbox" class="star-filter" value="5" checked>
+                    ★★★★★
+                </label>
+
+                <label>
+                    <input type="checkbox" class="star-filter" value="4" checked>
+                    ★★★★
+                </label>
+
+                <label>
+                    <input type="checkbox" class="star-filter" value="3" checked>
+                    ★★★
+                </label>
             </div>
 
             <div class="filter-group">
                 <h4>Comodidades</h4>
-                <label><input type="checkbox" checked> Wi-Fi gratuito</label>
-                <label><input type="checkbox"> Piscina</label>
-                <label><input type="checkbox"> Estacionamento</label>
-                <label><input type="checkbox"> Pet-friendly</label>
-                <label><input type="checkbox"> Spa</label>
-                <label><input type="checkbox"> Academia</label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="wi-fi" checked>
+                    Wi-Fi gratuito
+                </label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="piscina">
+                    Piscina
+                </label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="estacionamento">
+                    Estacionamento
+                </label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="pet-friendly">
+                    Pet-friendly
+                </label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="spa">
+                    Spa
+                </label>
+
+                <label>
+                    <input type="checkbox" class="amenity-filter" value="ginasio">
+                    Ginásio
+                </label>
             </div>
 
-            <button class="apply-btn">Aplicar filtros</button>
+            <button class="apply-btn" type="button">Aplicar filtros</button>
         </aside>
 
         <section class="results-section">
             <div class="results-header">
                 <span id="results-count">0 resultados</span>
+
                 <select id="sort-options">
                     <option value="asc">Preço crescente ↑</option>
                     <option value="desc">Preço decrescente ↓</option>
@@ -70,11 +128,24 @@
             <div class="hotel-list"></div>
         </section>
 
-        <aside class="map-container">
-            <a href="https://www.google.com/maps/search/hoteis+lisboa" target="_blank" class="map-link">
-                <iframe src="https://maps.google.com/maps?q=Lisboa&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+        <aside class="map-container" id="mapa">
+            <a
+                href="https://www.google.com/maps/search/Lisboa"
+                target="_blank"
+                class="map-link"
+                id="map-link">
+
+                <iframe
+                    id="map-iframe"
+                    src="https://maps.google.com/maps?q=Lisboa&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"
+                    loading="lazy">
+                </iframe>
+
                 <div class="map-overlay">
-                    <button class="view-map-btn">📍 Ver resultados no mapa</button>
+                    <button class="view-map-btn" type="button">
+                        📍 Ver resultados no mapa
+                    </button>
                 </div>
             </a>
         </aside>
@@ -82,5 +153,83 @@
     </div>
 
     <script src="scripts/resultados.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+
+            const tipo = params.get('tipo') || 'resultado';
+            const destino = params.get('destino') || 'Lisboa';
+            const entrada = params.get('entrada') || '';
+            const saida = params.get('saida') || '';
+            const pessoas = params.get('pessoas') || '1';
+
+            const tipoFormatado = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+
+            function formatarData(dataISO) {
+                if (!dataISO) return '';
+
+                const data = new Date(dataISO);
+
+                return data.toLocaleDateString('pt-PT', {
+                    day: '2-digit',
+                    month: 'short'
+                });
+            }
+
+            const entradaFormatada = formatarData(entrada);
+            const saidaFormatada = formatarData(saida);
+
+            const periodo =
+                entradaFormatada && saidaFormatada
+                    ? `${entradaFormatada}–${saidaFormatada}`
+                    : 'Datas flexíveis';
+
+            const textoPessoas =
+                Number(pessoas) === 1
+                    ? '1 pessoa'
+                    : `${pessoas} pessoas`;
+
+            const searchSummary = document.getElementById('search-summary');
+
+            if (searchSummary) {
+                searchSummary.innerHTML = `
+                    <span style="color: #1a6ef5; margin-right: 8px;">🔍</span>
+                    ${destino} · ${periodo} · ${textoPessoas} · ${tipoFormatado}
+                `;
+            }
+
+            const breadcrumbTipo = document.getElementById('breadcrumb-tipo');
+            const breadcrumbDestino = document.getElementById('breadcrumb-destino');
+
+            if (breadcrumbTipo) {
+                breadcrumbTipo.textContent = tipoFormatado;
+            }
+
+            if (breadcrumbDestino) {
+                breadcrumbDestino.textContent = destino;
+            }
+
+            const editBtn = document.getElementById('edit-search-btn');
+
+            if (editBtn) {
+                editBtn.href = `index.html?${params.toString()}`;
+            }
+
+            const mapaQuery = encodeURIComponent(`${tipo} ${destino}`);
+
+            const mapLink = document.getElementById('map-link');
+            const mapIframe = document.getElementById('map-iframe');
+
+            if (mapLink) {
+                mapLink.href = `https://www.google.com/maps/search/${mapaQuery}`;
+            }
+
+            if (mapIframe) {
+                mapIframe.src = `https://maps.google.com/maps?q=${mapaQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+            }
+        });
+    </script>
+
 </body>
 </html>

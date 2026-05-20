@@ -2,15 +2,16 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LAVI Reservas</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -18,7 +19,6 @@
 
     <nav class="nav">
       <a class="nav-btn" href="index.html">Início</a>
-      <a class="nav-btn" href="resultados.html">Pesquisar</a>
       <a class="nav-btn login-btn" href="login.html">Login</a>
     </nav>
   </header>
@@ -33,44 +33,43 @@
       <h2>Pesquisar reserva</h2>
 
       <form action="resultados.html" method="get">
-        <label>
+        <label for="tipo">
           Tipo de reserva
-          <select name="tipo">
-            <option>Hotel</option>
-            <option>Voo</option>
-            <option>Evento</option>
+          <select id="tipo" name="tipo" required>
+            <option value="hotel">Hotel</option>
+            <option value="voo">Voo</option>
+            <option value="evento">Evento</option>
           </select>
         </label>
 
-        <label>
+        <label for="destino">
           Destino
           <div class="autocomplete-container">
+            <input
+              type="text"
+              id="destino"
+              name="destino"
+              placeholder="Lisboa, Portugal"
+              autocomplete="off"
+              required>
 
-		<input
-			type="text"
-			id="destino"
-			name="destino"
-			placeholder="Lisboa, Portugal"
-			autocomplete="off">
-
-  <div id="sugestoes"></div>
-
-</div>
+            <div id="sugestoes"></div>
+          </div>
         </label>
 
-        <label>
+        <label for="entrada">
           Data de entrada
-          <input type="date" name="entrada">
+          <input type="date" id="entrada" name="entrada" required>
         </label>
 
-        <label>
+        <label for="saida">
           Data de saída
-          <input type="date" name="saida">
+          <input type="date" id="saida" name="saida" required>
         </label>
 
-        <label>
+        <label for="pessoas">
           Pessoas
-          <input type="number" name="pessoas" min="1" value="1">
+          <input type="number" id="pessoas" name="pessoas" min="1" value="1" required>
         </label>
 
         <button type="submit">Pesquisar</button>
@@ -83,24 +82,24 @@
       <div class="cards">
         <article class="card">
           <span class="badge">Melhor oferta</span>
-	  <img src="images/HAP.jpg" alt="Hotel em Lisboa">
+          <img src="images/HAP.jpg" alt="Hotel em Lisboa">
           <h3>Hotel Avenida Palace</h3>
           <p>Lisboa · a partir de 195€/noite</p>
-          <a href="reserva.html?tipo=hotel">Reservar</a>
+          <a href="reserva.html?id=1&tipo=hotel">Reservar</a>
         </article>
 
         <article class="card">
           <img src="images/Sagrada.jpg" alt="Voo para Barcelona">
           <h3>LIS → BCN</h3>
           <p>TAP Air Portugal · a partir de 89€</p>
-          <a href="reserva.html?tipo=voo">Reservar</a>
+          <a href="reserva.html?id=9&tipo=voo">Reservar</a>
         </article>
 
         <article class="card">
           <img src="images/festivalnos.jpg" alt="Evento em Lisboa">
           <h3>Festival NOS Alive</h3>
           <p>Lisboa · a partir de 75€</p>
-          <a href="reserva.html?tipo=evento">Reservar</a>
+          <a href="reserva.html?id=11&tipo=evento">Reservar</a>
         </article>
       </div>
     </section>
