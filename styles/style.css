@@ -13,10 +13,19 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
+
+  padding: 18px 60px;
+
+  background: white;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
 }
+
 
 .logo {
   font-weight: bold;
@@ -35,19 +44,40 @@ body {
 }
 
 .hero {
-  padding: 60px 40px;
-  background-color: #dce6f5;
+
+  background:
+  linear-gradient(
+  rgba(15,30,60,0.7),
+  rgba(15,30,60,0.7)
+  ),
+
+  url("../images/fundo.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  color: white;
+
+  padding: 120px 40px;
+
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 40px;
-  color: #1a2a4a;
+
+ font-size: 54px;
+
+ margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 18px;
-  color: #555;
+
+ font-size: 20px;
+
+ max-width: 600px;
+
+ margin: auto;
 }
 
 .pesquisa {
@@ -56,6 +86,9 @@ body {
   padding: 25px;
   background-color: white;
   border-radius: 10px;
+  box-shadow:
+  0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
 .pesquisa form {
@@ -74,10 +107,28 @@ label {
 
 input,
 select {
+
   margin-top: 6px;
+
   padding: 10px;
+
   border: 1px solid #ccc;
+
   border-radius: 5px;
+
+  transition: 0.3s;
+
+  outline: none;
+}
+
+input:focus,
+select:focus {
+
+  border-color:#1a6ef5;
+
+  box-shadow:
+
+  0 0 10px rgba(26,110,245,0.25);
 }
 
 button {
@@ -88,10 +139,16 @@ button {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  transition:0.3s;
 }
 
 button:hover {
   background-color: #1559c7;
+  transform:
+  translateY(-2px);
+  
+  box-shadow:
+  0 5px 15px rgba(26,110,245,0.4);
 }
 
 .destaques {
@@ -108,17 +165,56 @@ button:hover {
 
 .card {
   background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.card:hover {
+
+ transform:
+
+ translateY(-8px);
+
+ box-shadow:
+
+ 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .card img {
   width: 100%;
-  height: 150px;
+  height: 170px;
   object-fit: cover;
-  background-color: #ddd;
-  border-radius: 8px;
+  display: block;
+  transition:0.4s;
+}
+
+.card h3,
+.card p,
+.card a {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.card h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  margin-bottom: 14px;
+  color: #666;
+}
+
+.card a {
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.card:hover img {
+
+ transform:scale(1.05);
 }
 
 .card h3 {
@@ -136,10 +232,16 @@ button:hover {
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background-color: white;
-  color: #777;
+
+ background:#1a2a4a;
+
+ color:white;
+
+ padding:30px;
+
+ text-align:center;
+
+ margin-top:60px;
 }
 
 /* Responsividade */
@@ -151,8 +253,41 @@ footer {
   }
 
   .nav a {
-    margin: 0 8px;
+
+    margin-left: 20px;
+
+    text-decoration: none;
+
+    color: #1a6ef5;
+
+    font-weight: 500;
+
+    position: relative;
   }
+
+  .nav a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -4px;
+
+  width: 0;
+
+  height: 2px;
+
+  background: #1a6ef5;
+
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+
+  width: 100%;
+}
 
   .hero {
     padding: 40px 20px;
