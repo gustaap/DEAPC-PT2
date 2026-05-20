@@ -575,9 +575,11 @@
       <h3>Resumo da reserva</h3>
 
       <div class="resumo-item">
-        <div class="estrelas">★★★★★</div>
-        <div class="titulo">Hotel Avenida Palace</div>
-        <div class="detalhe">
+        <div class="estrelas" id="reserva-estrelas">★★★★★</div>
+
+        <div class="titulo" id="reserva-titulo">Hotel Avenida Palace</div>
+
+        <div class="detalhe" id="reserva-detalhe">
           Lisboa, Portugal<br />
           15 Jun – 20 Jun 2026 · 5 noites<br />
           Quarto duplo superior · 2 adultos<br />
@@ -586,8 +588,8 @@
       </div>
 
       <div class="linha-preco">
-        <span>195 € × 5 noites</span>
-        <span>975,00 €</span>
+        <span id="reserva-preco-label">195 € × 5 noites</span>
+        <span id="reserva-subtotal">975,00 €</span>
       </div>
       <div class="linha-preco">
         <span>Taxas e impostos</span>
@@ -600,7 +602,7 @@
 
       <div class="linha-total">
         <span>Total</span>
-        <span>1.062,75 €</span>
+        <span id="reserva-total">1.062,75 €</span>
       </div>
 
       <div class="badge-seguro">🔒 Pagamento seguro e encriptado</div>
@@ -613,16 +615,126 @@
         Cancelamento gratuito até 48h antes do check-in.<br />
         Sem taxas ocultas.
       </p>
-    </aside>
+<aside class="resumo">
+  <h3>Resumo da reserva</h3>
+
+  <div class="resumo-item">
+    <div class="estrelas" id="reserva-icone">★★★★★</div>
+
+    <div class="titulo" id="reserva-titulo">Hotel Avenida Palace</div>
+
+    <div class="detalhe" id="reserva-detalhe">
+      Lisboa, Portugal<br />
+      15 Jun – 20 Jun 2026 · 5 noites<br />
+      Quarto duplo superior · 2 adultos<br />
+      Inclui pequeno-almoço
+    </div>
+  </div>
+
+  <div class="linha-preco">
+    <span id="reserva-preco-label">195 € × 5 noites</span>
+    <span id="reserva-subtotal">975,00 €</span>
+  </div>
+
+  <div class="linha-preco">
+    <span id="reserva-taxas-label">Taxas e impostos</span>
+    <span id="reserva-taxas">87,75 €</span>
+  </div>
+
+  <div class="linha-preco">
+    <span id="reserva-extra-label">Pequeno-almoço</span>
+    <span id="reserva-extra">incluído</span>
+  </div>
+
+  <div class="linha-total">
+    <span>Total</span>
+    <span id="reserva-total">1.062,75 €</span>
+  </div>
+
+  <div class="badge-seguro">Pagamento seguro e encriptado</div>
+
+  <button class="btn-confirmar" onclick="window.location.href='historico.html'">
+    Confirmar reserva
+  </button>
+
+  <p class="nota-cancelamento" id="reserva-nota">
+    Cancelamento gratuito até 48h antes do check-in.<br />
+    Sem taxas ocultas.
+  </p>
+</aside>
 
   </div><!-- /pagina -->
 
   <script>
-    function selecionarMetodo(el) {
-      document.querySelectorAll('.metodo').forEach(m => m.classList.remove('selecionado'));
-      el.classList.add('selecionado');
+  function selecionarMetodo(el) {
+    document.querySelectorAll('.metodo').forEach(m => m.classList.remove('selecionado'));
+    el.classList.add('selecionado');
+  }
+
+  const reservas = {
+    hotel: {
+      icone: "★★★★★",
+      titulo: "Hotel Avenida Palace",
+      detalhe: "Lisboa, Portugal<br>15 Jun – 20 Jun 2026 · 5 noites<br>Quarto duplo superior · 2 adultos<br>Inclui pequeno-almoço",
+      precoLabel: "195 € × 5 noites",
+      subtotal: "975,00 €",
+      taxasLabel: "Taxas e impostos",
+      taxas: "87,75 €",
+      extraLabel: "Pequeno-almoço",
+      extra: "incluído",
+      total: "1.062,75 €",
+      nota: "Cancelamento gratuito até 48h antes do check-in.<br>Sem taxas ocultas."
+    },
+
+    voo: {
+      icone: "✈",
+      titulo: "LIS → BCN · TAP Air Portugal",
+      detalhe: "Lisboa para Barcelona<br>16 Jun 2026 · Ida simples<br>1 passageiro · Classe económica<br>Bagagem de mão incluída",
+      precoLabel: "1 bilhete de avião",
+      subtotal: "89,00 €",
+      taxasLabel: "Taxas aeroportuárias",
+      taxas: "incluídas",
+      extraLabel: "Bagagem de mão",
+      extra: "incluída",
+      total: "89,00 €",
+      nota: "Alterações sujeitas às condições da companhia aérea.<br>Sem taxas ocultas."
+    },
+
+    evento: {
+      icone: "🎟",
+      titulo: "Festival NOS Alive 2026",
+      detalhe: "Lisboa, Portugal<br>12 Jul 2026 · Evento musical<br>1 bilhete geral<br>Entrada válida para o evento",
+      precoLabel: "1 bilhete geral",
+      subtotal: "75,00 €",
+      taxasLabel: "Taxas de serviço",
+      taxas: "incluídas",
+      extraLabel: "Tipo de entrada",
+      extra: "geral",
+      total: "75,00 €",
+      nota: "Bilhete válido apenas para a data indicada.<br>Sem taxas ocultas."
     }
-  </script>
+  };
+
+  const parametros = new URLSearchParams(window.location.search);
+  const tipoReserva = parametros.get("reserva") || "hotel";
+  const reserva = reservas[tipoReserva] || reservas.hotel;
+
+  document.getElementById("reserva-icone").textContent = reserva.icone;
+  document.getElementById("reserva-titulo").textContent = reserva.titulo;
+  document.getElementById("reserva-detalhe").innerHTML = reserva.detalhe;
+
+  document.getElementById("reserva-preco-label").textContent = reserva.precoLabel;
+  document.getElementById("reserva-subtotal").textContent = reserva.subtotal;
+
+  document.getElementById("reserva-taxas-label").textContent = reserva.taxasLabel;
+  document.getElementById("reserva-taxas").textContent = reserva.taxas;
+
+  document.getElementById("reserva-extra-label").textContent = reserva.extraLabel;
+  document.getElementById("reserva-extra").textContent = reserva.extra;
+
+  document.getElementById("reserva-total").textContent = reserva.total;
+  document.getElementById("reserva-nota").innerHTML = reserva.nota;
+</script>
 
 </body>
 </html>
