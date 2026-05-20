@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVI Reservas - Resultados</title>
+    <link rel="stylesheet" href="styles/resultados.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">LAVI <strong>RESERVAS</strong></div>
+        <div class="search-summary">🔍 Lisboa · 15–20 Jun · 2 hóspedes</div>
+        <button class="edit-btn">Editar</button>
+    </header>
+
+    <nav class="mobile-nav">
+        <button class="chip">Filtros</button>
+        <button class="chip">Preço ↑</button>
+        <button class="chip">📍 Mapa</button>
+    </nav>
+
+    <div class="main-layout">
+        
+        <aside class="filters-sidebar">
+            <h3>Filtros <button class="reset-btn">Reset</button></h3>
+            
+            <div class="filter-group">
+                <h4>Preço por noite</h4>
+                <input type="range" min="0" max="500" value="300">
+            </div>
+
+            <div class="filter-group">
+                <h4>Classificação</h4>
+                <label><input type="checkbox"> ★★★★★</label>
+                <label><input type="checkbox"> ★★★★</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Comodidades</h4>
+                <label><input type="checkbox"> Wi-Fi Gratuito</label>
+                <label><input type="checkbox"> Piscina</label>
+            </div>
+        </aside>
+
+        <section class="results-section">
+            <div class="results-header">
+                <span>24 resultados encontrados</span>
+                <select>
+                    <option>Ordenar por: Preço crescente</option>
+                </select>
+            </div>
+
+            <div class="hotel-list">
+                <article class="hotel-card">
+                    <div class="hotel-image">[Foto]</div>
+                    <div class="hotel-info">
+                        <span class="badge">★ Destaque</span>
+                        <h3>Hotel Avenida Palace</h3>
+                        <span class="stars">★★★★★</span>
+                        <p>Lisboa, Avenida da Liberdade</p>
+                    </div>
+                    <div class="hotel-price">
+                        <span class="price">195 €</span>
+                        <button class="book-btn">Reservar</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <aside class="map-container">
+            <div class="map-placeholder">[Espaço do Mapa Opcional]</div>
+        </aside>
+
+    </div>
+
+</body>
+</html>

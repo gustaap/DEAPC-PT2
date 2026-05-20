@@ -1,0 +1,89 @@
+/* 1. Estilo Geral da Página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0ed;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 2. O Contentor dos Cards (Lista) */
+.hotel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre cada card */
+}
+
+/* 3. O Card do Hotel (Seletor de Classe) */
+.hotel-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 7px; /* Cantos arredondados como no wireframe */
+    display: flex; /* Alinha foto, info e preço lado a lado */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 4. Destaque para o primeiro card (Seletor Combinado) */
+.hotel-card.featured {
+    border-left: 5px solid #f5a623; /* Barra dourada de destaque */
+}
+
+/* 5. Espaço da Foto */
+.hotel-image-placeholder {
+    width: 150px;
+    background-color: #d0dae8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #889;
+    font-size: 12px;
+}
+
+/* 6. Informação Central */
+.hotel-info {
+    padding: 15px;
+    flex: 1; /* Ocupa o espaço que sobrar */
+}
+
+.hotel-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.featured-badge {
+    background-color: #f5a623;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* 7. Secção de Preços e Botão */
+.hotel-price-actions {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-left: 1px solid #eee;
+    background-color: #fafafa;
+    min-width: 120px;
+}
+
+.book-button {
+    background-color: #1a6ef5; /* O azul do teu wireframe */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Pseudo-classe para quando passas o rato no botão (Exigência do Guião!) */
+.book-button:hover {
+    background-color: #1156c7;
+}
