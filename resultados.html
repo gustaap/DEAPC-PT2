@@ -27,52 +27,115 @@
             
             <div class="filter-group">
                 <h4>Preço por noite</h4>
-                <input type="range" min="0" max="500" value="300">
+                <input type="range" id="price-slider" min="0" max="1000" value="500">
+                <label id="price-label" style="text-align: right; display: block; color: #1a6ef5; font-size: 12px; font-weight: bold; margin-top: 5px;">até 500 €</label>
             </div>
 
             <div class="filter-group">
                 <h4>Classificação</h4>
-                <label><input type="checkbox"> ★★★★★</label>
-                <label><input type="checkbox"> ★★★★</label>
+                <label><input type="checkbox" checked> ★★★★★</label>
+                <label><input type="checkbox" checked> ★★★★</label>
+                <label><input type="checkbox" checked> ★★★</label>
             </div>
 
             <div class="filter-group">
                 <h4>Comodidades</h4>
-                <label><input type="checkbox"> Wi-Fi Gratuito</label>
+                <label><input type="checkbox" checked> Wi-Fi gratuito</label>
                 <label><input type="checkbox"> Piscina</label>
+                <label><input type="checkbox"> Estacionamento</label>
+                <label><input type="checkbox"> Pet-friendly</label>
+                <label><input type="checkbox"> Spa</label>
+                <label><input type="checkbox"> Academia</label>
             </div>
+
+            <button class="apply-btn">Aplicar filtros</button>
         </aside>
 
         <section class="results-section">
             <div class="results-header">
-                <span>24 resultados encontrados</span>
-                <select>
-                    <option>Ordenar por: Preço crescente</option>
+                <span>24 resultados</span>
+                <select id="sort-options">
+                    <option value="asc">Preço crescente ↑</option>
+                    <option value="desc">Preço decrescente ↓</option>
                 </select>
             </div>
 
             <div class="hotel-list">
-                <article class="hotel-card">
-                    <div class="hotel-image">[Foto]</div>
+                
+                <article class="hotel-card" data-price="195">
+                    <div class="badge">★ Destaque</div>
+                    <img src="images/hotel1.jpg" alt="Hotel" class="hotel-image"> 
                     <div class="hotel-info">
-                        <span class="badge">★ Destaque</span>
                         <h3>Hotel Avenida Palace</h3>
                         <span class="stars">★★★★★</span>
-                        <p>Lisboa, Avenida da Liberdade</p>
+                        <p class="details">Lisboa, Avenida da Liberdade • 0,5 km do centro</p>
+                        <p class="amenities">Wi-Fi • Piscina • Spa • Restaurante</p>
                     </div>
                     <div class="hotel-price">
                         <span class="price">195 €</span>
+                        <span class="price-sub">por noite • 5 noites</span>
+                        <span class="price-total">Total: 975 €</span>
                         <button class="book-btn">Reservar</button>
                     </div>
                 </article>
+
+                <article class="hotel-card" data-price="89">
+                    <img src="images/hotel2.jpg" alt="Hotel" class="hotel-image">
+                    <div class="hotel-info">
+                        <h3>Hotel Bairro Alto</h3>
+                        <span class="stars">★★★★</span>
+                        <p class="details">Lisboa, Chiado • 1,2 km do centro</p>
+                        <p class="amenities">Wi-Fi • Bar • Vista cidade</p>
+                    </div>
+                    <div class="hotel-price">
+                        <span class="price">89 €</span>
+                        <span class="price-sub">por noite • 5 noites</span>
+                        <span class="price-total">Total: 445 €</span>
+                        <button class="book-btn">Reservar</button>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-price="55">
+                    <img src="images/hotel3.jpg" alt="Hotel" class="hotel-image">
+                    <div class="hotel-info">
+                        <h3>Residencial Rossio</h3>
+                        <span class="stars">★★★</span>
+                        <p class="details">Lisboa, Baixa • centro histórico</p>
+                        <p class="amenities">Wi-Fi • Pequeno-almoço incluído</p>
+                    </div>
+                    <div class="hotel-price">
+                        <span class="price">55 €</span>
+                        <span class="price-sub">por noite • 5 noites</span>
+                        <span class="price-total">Total: 275 €</span>
+                        <button class="book-btn">Reservar</button>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-price="120">
+                    <div class="badge" style="background-color: #1a6ef5;">✈️ Voo direto</div>
+                    <img src="images/voo1.jpg" alt="Voo TAP" class="hotel-image">
+                    <div class="hotel-info">
+                        <h3>TAP Air Portugal</h3>
+                        <p class="details">Voo LIS ➝ OPO • Duração: 0h55</p>
+                        <p class="amenities">Bagagem de cabine • Wi-Fi a bordo</p>
+                    </div>
+                    <div class="hotel-price">
+                        <span class="price">120 €</span>
+                        <span class="price-sub">ida e volta / pessoa</span>
+                        <span class="price-total">Total: 240 €</span>
+                        <button class="book-btn">Selecionar</button>
+                    </div>
+                </article>
+
             </div>
         </section>
 
         <aside class="map-container">
-            <div class="map-placeholder">[Espaço do Mapa Opcional]</div>
+            <div class="map-placeholder">Mapa — Lisboa</div>
         </aside>
 
     </div>
 
+    <script src="scripts/resultados.js"></script>
 </body>
 </html>

@@ -295,3 +295,51 @@ input[type="range"] {
         padding: 10px 25px;
     }
 }
+/* ==========================================================================
+   AJUSTES FINAIS DO WIREFRAME (Textos, Preços Verdes e Botão de Filtro)
+   ========================================================================== */
+
+/* Botão Aplicar Filtros */
+.apply-btn {
+    background-color: #1a6ef5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.apply-btn:hover {
+    background-color: #1156c7;
+}
+
+/* Detalhes do Hotel (Wi-Fi, distância, etc) */
+.details, .amenities {
+    color: #888;
+    font-size: 13px;
+    margin: 6px 0 0 0;
+}
+
+/* Tamanhos das caixas de preço */
+.price-sub {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+/* O Verde do Preço Total */
+.price-total {
+    font-size: 14px;
+    font-weight: bold;
+    color: #27ae60; /* Verde escuro do teu wireframe */
+    margin-bottom: 15px;
+}
+
+/* Ajuste fino da imagem quando não encontra foto */
+.hotel-image {
+    min-height: 180px;
+}
