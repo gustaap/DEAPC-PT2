@@ -10,7 +10,10 @@
 
     <header class="main-header">
         <div class="logo">LAVI <strong>RESERVAS</strong></div>
-        <div class="search-summary">🔍 Lisboa · 15–20 Jun · 2 hóspedes</div>
+        <div class="search-summary">
+            <span style="color: #1a6ef5; margin-right: 8px;">🔍</span> 
+            Lisboa · 15–20 Jun · 2 hóspedes · Hotel
+        </div>
         <button class="edit-btn">Editar</button>
     </header>
 
@@ -20,6 +23,10 @@
         <button class="chip">📍 Mapa</button>
     </nav>
 
+    <div class="breadcrumbs">
+        <a href="#">Home</a> › <a href="#">Hotéis</a> › Lisboa
+    </div>
+
     <div class="main-layout">
         
         <aside class="filters-sidebar">
@@ -27,15 +34,15 @@
             
             <div class="filter-group">
                 <h4>Preço por noite</h4>
-                <input type="range" id="price-slider" min="0" max="1000" value="500">
-                <label id="price-label" style="text-align: right; display: block; color: #1a6ef5; font-size: 12px; font-weight: bold; margin-top: 5px;">até 500 €</label>
+                <input type="range" id="price-slider" min="0" max="1000" value="1000">
+                <label id="price-label" style="text-align: right; display: block; color: #1a6ef5; font-size: 12px; font-weight: bold; margin-top: 5px;">até 1000 €</label>
             </div>
 
             <div class="filter-group">
                 <h4>Classificação</h4>
-                <label><input type="checkbox" checked> ★★★★★</label>
-                <label><input type="checkbox" checked> ★★★★</label>
-                <label><input type="checkbox" checked> ★★★</label>
+                <label><input type="checkbox" class="star-filter" value="5" checked> ★★★★★</label>
+                <label><input type="checkbox" class="star-filter" value="4" checked> ★★★★</label>
+                <label><input type="checkbox" class="star-filter" value="3" checked> ★★★</label>
             </div>
 
             <div class="filter-group">
@@ -53,7 +60,7 @@
 
         <section class="results-section">
             <div class="results-header">
-                <span>24 resultados</span>
+                <span id="results-count">4 resultados</span>
                 <select id="sort-options">
                     <option value="asc">Preço crescente ↑</option>
                     <option value="desc">Preço decrescente ↓</option>
@@ -62,7 +69,7 @@
 
             <div class="hotel-list">
                 
-                <article class="hotel-card" data-price="195">
+                <article class="hotel-card" data-price="195" data-stars="5">
                     <div class="badge">★ Destaque</div>
                     <img src="images/hotel1.jpg" alt="Hotel" class="hotel-image"> 
                     <div class="hotel-info">
@@ -79,7 +86,7 @@
                     </div>
                 </article>
 
-                <article class="hotel-card" data-price="89">
+                <article class="hotel-card" data-price="89" data-stars="4">
                     <img src="images/hotel2.jpg" alt="Hotel" class="hotel-image">
                     <div class="hotel-info">
                         <h3>Hotel Bairro Alto</h3>
@@ -95,7 +102,7 @@
                     </div>
                 </article>
 
-                <article class="hotel-card" data-price="55">
+                <article class="hotel-card" data-price="55" data-stars="3">
                     <img src="images/hotel3.jpg" alt="Hotel" class="hotel-image">
                     <div class="hotel-info">
                         <h3>Residencial Rossio</h3>
@@ -111,7 +118,7 @@
                     </div>
                 </article>
 
-                <article class="hotel-card" data-price="120">
+                <article class="hotel-card" data-price="120" data-stars="voo">
                     <div class="badge" style="background-color: #1a6ef5;">✈️ Voo direto</div>
                     <img src="images/voo1.jpg" alt="Voo TAP" class="hotel-image">
                     <div class="hotel-info">
@@ -131,7 +138,12 @@
         </section>
 
         <aside class="map-container">
-            <div class="map-placeholder">Mapa — Lisboa</div>
+            <a href="https://www.google.com/maps/search/hoteis+lisboa" target="_blank" class="map-link">
+                <iframe src="https://maps.google.com/maps?q=Lisboa&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+                <div class="map-overlay">
+                    <button class="view-map-btn">📍 Ver resultados no mapa</button>
+                </div>
+            </a>
         </aside>
 
     </div>

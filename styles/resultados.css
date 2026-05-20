@@ -1,21 +1,13 @@
-/* ==========================================================================
-   1. ESTILOS GERAIS (As cores do teu wireframe)
-   ========================================================================== */
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #fcfcfc; /* Fundo super claro */
+    background-color: #fcfcfc;
     color: #333;
     margin: 0;
     padding: 20px;
 }
 
-/* ==========================================================================
-   2. CABEÇALHO (Header)
-   ========================================================================== */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -24,52 +16,57 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 12px 24px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.logo {
-    font-size: 16px;
-    color: #333;
-}
+.logo { font-size: 16px; color: #333; }
+.logo strong { color: #f5a623; }
 
-.logo strong {
-    color: #f5a623; /* Laranja da vossa marca */
-}
-
+/* Nova barra de pesquisa estilo wireframe */
 .search-summary {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 30px;
     border: 1px solid #ccc;
-    border-radius: 30px; /* Barra de pesquisa redonda */
-    padding: 10px 20px;
+    border-radius: 30px;
+    padding: 12px 20px;
     font-size: 14px;
     color: #666;
-    background: #fff;
+    background: #f9f9f9;
 }
 
 .edit-btn {
     background: transparent;
     border: none;
-    color: #1a6ef5; /* Azul principal */
+    color: #1a6ef5;
     cursor: pointer;
     font-weight: bold;
 }
 
-/* ==========================================================================
-   3. LAYOUT PRINCIPAL (As tuas colunas)
-   ========================================================================== */
+/* Novo Breadcrumb */
+.breadcrumbs {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.breadcrumbs a {
+    color: #1a6ef5;
+    text-decoration: none;
+}
+
 .main-layout {
     display: grid;
-    grid-template-columns: 240px 1fr 300px; /* Esquerda | Centro | Direita */
+    grid-template-columns: 240px 1fr 300px;
     gap: 20px;
 }
 
-/* ==========================================================================
-   4. FILTROS (Barra Lateral Esquerda)
-   ========================================================================== */
 .filters-sidebar {
-    background-color: #f9f9f9; /* Cinza clarinho do wireframe */
+    background-color: #f9f9f9;
     border: 1px solid #eaeaea;
     border-radius: 8px;
     padding: 20px;
+    align-self: start;
 }
 
 .filters-sidebar h3 {
@@ -86,220 +83,13 @@ body {
     border: none;
     font-size: 12px;
     cursor: pointer;
-}
-
-.filter-group h4 {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-.filter-group label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 8px;
-    color: #555;
-    cursor: pointer;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-/* ==========================================================================
-   5. CARDS DOS HOTÉIS (O Centro)
-   ========================================================================== */
-.results-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #666;
-}
-
-.hotel-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.hotel-card {
-    display: flex;
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative; /* Importante para a badge laranja! */
-}
-
-/* A imagem cinzenta à esquerda */
-.hotel-image {
-    width: 220px;
-    background-color: #d8dde6; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-}
-
-/* Aquele autocolante laranja a dizer "Destaque" */
-.badge {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    background-color: #f5a623;
-    color: white;
-    padding: 4px 12px;
-    font-size: 11px;
     font-weight: bold;
-    border-radius: 0 4px 4px 0;
 }
 
-.hotel-info {
-    flex: 1;
-    padding: 15px 20px;
-}
+.filter-group h4 { font-size: 14px; margin-bottom: 10px; color: #444; }
+.filter-group label { display: block; font-size: 13px; margin-bottom: 8px; color: #555; cursor: pointer; }
+input[type="range"] { width: 100%; cursor: pointer; }
 
-.hotel-info h3 {
-    margin: 0 0 5px 0;
-    font-size: 18px;
-    display: inline-block;
-}
-
-.stars {
-    color: #f5a623;
-    margin-left: 10px;
-    font-size: 14px;
-}
-
-.hotel-info p {
-    color: #777;
-    font-size: 13px;
-    margin: 5px 0 0 0;
-}
-
-/* Preço e Botão encostados à direita */
-.hotel-price {
-    width: 160px;
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.book-btn {
-    background-color: #1a6ef5;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 15px;
-    width: 100%;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.book-btn:hover {
-    background-color: #1156c7;
-}
-
-/* ==========================================================================
-   6. MAPA (Painel da Direita)
-   ========================================================================== */
-.map-container {
-    background-color: #eef2f5;
-    border: 1px solid #c5d5f0;
-    border-radius: 12px;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ==========================================================================
-   7. RESPONSIVIDADE (Wireframe Mobile à Direita)
-   ========================================================================== */
-.mobile-nav {
-    display: none; /* Escondido no PC */
-}
-
-@media (max-width: 900px) {
-    .main-layout {
-        grid-template-columns: 1fr; /* Passa a 1 coluna */
-    }
-
-    .filters-sidebar, .map-container, .main-header {
-        display: none; /* Esconde mapa, filtros laterais e header grande */
-    }
-
-    .mobile-nav {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        overflow-x: auto; /* Deixa deslizar com o dedo se houver muitos botões */
-    }
-
-    /* Os botões ovais do teu telemóvel */
-    .chip {
-        background: #fff;
-        border: 1px solid #ccc;
-        padding: 6px 15px;
-        border-radius: 20px;
-        white-space: nowrap;
-    }
-
-    /* O primeiro botão (Filtros) fica azul */
-    .chip:first-child {
-        background: #1a6ef5;
-        color: white;
-        border-color: #1a6ef5;
-    }
-
-    /* Como os cards ficam no telemóvel */
-    .hotel-card {
-        flex-direction: column;
-    }
-
-    .hotel-image {
-        width: 100%;
-        height: 180px;
-    }
-
-    .badge {
-        top: 15px;
-        left: 15px;
-        border-radius: 4px;
-    }
-
-    .hotel-price {
-        width: 100%;
-        flex-direction: row; /* Preço e botão lado a lado */
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid #eee;
-        padding: 15px;
-    }
-
-    .price {
-        margin-bottom: 0;
-    }
-
-    .book-btn {
-        width: auto;
-        padding: 10px 25px;
-    }
-}
-/* ==========================================================================
-   AJUSTES FINAIS DO WIREFRAME (Textos, Preços Verdes e Botão de Filtro)
-   ========================================================================== */
-
-/* Botão Aplicar Filtros */
 .apply-btn {
     background-color: #1a6ef5;
     color: white;
@@ -313,33 +103,147 @@ input[type="range"] {
     transition: background-color 0.2s;
 }
 
-.apply-btn:hover {
-    background-color: #1156c7;
-}
+.apply-btn:hover { background-color: #1156c7; }
 
-/* Detalhes do Hotel (Wi-Fi, distância, etc) */
-.details, .amenities {
-    color: #888;
-    font-size: 13px;
-    margin: 6px 0 0 0;
-}
-
-/* Tamanhos das caixas de preço */
-.price-sub {
-    font-size: 11px;
-    color: #888;
-    margin-bottom: 5px;
-}
-
-/* O Verde do Preço Total */
-.price-total {
-    font-size: 14px;
-    font-weight: bold;
-    color: #27ae60; /* Verde escuro do teu wireframe */
+.results-header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
 }
 
-/* Ajuste fino da imagem quando não encontra foto */
+.results-header select { padding: 5px; border-radius: 5px; }
+
+.hotel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hotel-card {
+    display: flex;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
 .hotel-image {
+    width: 220px;
     min-height: 180px;
+    background-color: #d8dde6; 
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background-color: #f5a623;
+    color: white;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+}
+
+.hotel-info { flex: 1; padding: 15px 20px; }
+.hotel-info h3 { margin: 0 0 5px 0; font-size: 18px; display: inline-block; }
+.stars { color: #f5a623; margin-left: 10px; font-size: 14px; }
+.details, .amenities { color: #888; font-size: 13px; margin: 6px 0 0 0; }
+
+.hotel-price {
+    width: 160px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.price { font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #333; }
+.price-sub { font-size: 11px; color: #888; margin-bottom: 5px; }
+.price-total { font-size: 14px; font-weight: bold; color: #27ae60; margin-bottom: 15px; }
+
+.book-btn {
+    background-color: #1a6ef5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.book-btn:hover { background-color: #1156c7; }
+
+/* CSS do Novo Mapa (Estilo Booking) */
+.map-container {
+    height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.map-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.map-link iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none; /* Deixa o clique passar para o link principal */
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.05);
+    transition: background 0.3s;
+}
+
+.map-link:hover .map-overlay {
+    background: rgba(0,0,0,0.15);
+}
+
+.view-map-btn {
+    background-color: #1a6ef5;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.map-link:hover .view-map-btn {
+    transform: scale(1.05);
+}
+
+/* Responsividade Mobile */
+.mobile-nav { display: none; }
+@media (max-width: 900px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .filters-sidebar, .map-container, .main-header, .breadcrumbs { display: none; }
+    .mobile-nav { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; }
+    .chip { background: #fff; border: 1px solid #ccc; padding: 6px 15px; border-radius: 20px; white-space: nowrap; }
+    .chip:first-child { background: #1a6ef5; color: white; border-color: #1a6ef5; }
+    .hotel-card { flex-direction: column; }
+    .hotel-image { width: 100%; height: 180px; }
+    .hotel-price { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding: 15px; }
+    .price { margin-bottom: 0; }
+    .book-btn { width: auto; padding: 10px 25px; }
 }
