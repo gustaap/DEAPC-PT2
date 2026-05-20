@@ -1,89 +1,297 @@
-/* 1. Estilo Geral da Página */
+/* ==========================================================================
+   1. ESTILOS GERAIS (As cores do teu wireframe)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0ed;
-    color: #1a1a1a;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fcfcfc; /* Fundo super claro */
+    color: #333;
     margin: 0;
     padding: 20px;
 }
 
-/* 2. O Contentor dos Cards (Lista) */
+/* ==========================================================================
+   2. CABEÇALHO (Header)
+   ========================================================================== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px 24px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 16px;
+    color: #333;
+}
+
+.logo strong {
+    color: #f5a623; /* Laranja da vossa marca */
+}
+
+.search-summary {
+    border: 1px solid #ccc;
+    border-radius: 30px; /* Barra de pesquisa redonda */
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #666;
+    background: #fff;
+}
+
+.edit-btn {
+    background: transparent;
+    border: none;
+    color: #1a6ef5; /* Azul principal */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   3. LAYOUT PRINCIPAL (As tuas colunas)
+   ========================================================================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 300px; /* Esquerda | Centro | Direita */
+    gap: 20px;
+}
+
+/* ==========================================================================
+   4. FILTROS (Barra Lateral Esquerda)
+   ========================================================================== */
+.filters-sidebar {
+    background-color: #f9f9f9; /* Cinza clarinho do wireframe */
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.filters-sidebar h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.reset-btn {
+    color: #e53e3e;
+    background: transparent;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter-group h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #555;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+/* ==========================================================================
+   5. CARDS DOS HOTÉIS (O Centro)
+   ========================================================================== */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
 .hotel-list {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço entre cada card */
+    gap: 15px;
 }
 
-/* 3. O Card do Hotel (Seletor de Classe) */
 .hotel-card {
-    background-color: #ffffff;
+    display: flex;
+    background: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 7px; /* Cantos arredondados como no wireframe */
-    display: flex; /* Alinha foto, info e preço lado a lado */
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative; /* Importante para a badge laranja! */
 }
 
-/* 4. Destaque para o primeiro card (Seletor Combinado) */
-.hotel-card.featured {
-    border-left: 5px solid #f5a623; /* Barra dourada de destaque */
-}
-
-/* 5. Espaço da Foto */
-.hotel-image-placeholder {
-    width: 150px;
-    background-color: #d0dae8;
+/* A imagem cinzenta à esquerda */
+.hotel-image {
+    width: 220px;
+    background-color: #d8dde6; 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #889;
-    font-size: 12px;
+    color: #888;
 }
 
-/* 6. Informação Central */
+/* Aquele autocolante laranja a dizer "Destaque" */
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background-color: #f5a623;
+    color: white;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+}
+
 .hotel-info {
-    padding: 15px;
-    flex: 1; /* Ocupa o espaço que sobrar */
+    flex: 1;
+    padding: 15px 20px;
 }
 
 .hotel-info h3 {
     margin: 0 0 5px 0;
-    font-size: 16px;
+    font-size: 18px;
+    display: inline-block;
 }
 
-.featured-badge {
-    background-color: #f5a623;
-    color: white;
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-weight: bold;
+.stars {
+    color: #f5a623;
+    margin-left: 10px;
+    font-size: 14px;
 }
 
-/* 7. Secção de Preços e Botão */
-.hotel-price-actions {
-    padding: 15px;
+.hotel-info p {
+    color: #777;
+    font-size: 13px;
+    margin: 5px 0 0 0;
+}
+
+/* Preço e Botão encostados à direita */
+.hotel-price {
+    width: 160px;
+    padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-end;
-    border-left: 1px solid #eee;
-    background-color: #fafafa;
-    min-width: 120px;
 }
 
-.book-button {
-    background-color: #1a6ef5; /* O azul do teu wireframe */
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.book-btn {
+    background-color: #1a6ef5;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 15px;
     width: 100%;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Pseudo-classe para quando passas o rato no botão (Exigência do Guião!) */
-.book-button:hover {
+.book-btn:hover {
     background-color: #1156c7;
+}
+
+/* ==========================================================================
+   6. MAPA (Painel da Direita)
+   ========================================================================== */
+.map-container {
+    background-color: #eef2f5;
+    border: 1px solid #c5d5f0;
+    border-radius: 12px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (Wireframe Mobile à Direita)
+   ========================================================================== */
+.mobile-nav {
+    display: none; /* Escondido no PC */
+}
+
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr; /* Passa a 1 coluna */
+    }
+
+    .filters-sidebar, .map-container, .main-header {
+        display: none; /* Esconde mapa, filtros laterais e header grande */
+    }
+
+    .mobile-nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        overflow-x: auto; /* Deixa deslizar com o dedo se houver muitos botões */
+    }
+
+    /* Os botões ovais do teu telemóvel */
+    .chip {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 6px 15px;
+        border-radius: 20px;
+        white-space: nowrap;
+    }
+
+    /* O primeiro botão (Filtros) fica azul */
+    .chip:first-child {
+        background: #1a6ef5;
+        color: white;
+        border-color: #1a6ef5;
+    }
+
+    /* Como os cards ficam no telemóvel */
+    .hotel-card {
+        flex-direction: column;
+    }
+
+    .hotel-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .badge {
+        top: 15px;
+        left: 15px;
+        border-radius: 4px;
+    }
+
+    .hotel-price {
+        width: 100%;
+        flex-direction: row; /* Preço e botão lado a lado */
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding: 15px;
+    }
+
+    .price {
+        margin-bottom: 0;
+    }
+
+    .book-btn {
+        width: auto;
+        padding: 10px 25px;
+    }
 }
