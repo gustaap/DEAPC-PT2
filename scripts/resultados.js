@@ -408,27 +408,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. FILTROS EXTRA DA PÁGINA RESULTADOS
     // ==========================================================================
 
-    function aplicarFiltros() {
-        const maxPrice = priceSlider ? Number(priceSlider.value) : Infinity;
+    function obterAliasesComodidade(valor) {
+        const aliases = {
+            'wi-fi': ['wi-fi', 'wifi', 'internet'],
+            'piscina': ['piscina'],
+            'estacionamento': ['estacionamento'],
+            'pet-friendly': ['pet-friendly', 'animais permitidos', 'animais'],
+            'spa': ['spa'],
+            'ginasio': ['ginasio', 'ginásio', 'academia']
+        };
 
-        const checkedStars = Array.from(document.querySelectorAll('.star-filter:checked'))
-            .map(cb => cb.value);
-
-        itensAtuais = itensPesquisaBase.filter(item => {
-            const priceMatch = item.preco <= maxPrice;
-
-            const starsMatch =
-                checkedStars.length === 0 ||
-                item.tipo === 'voo' ||
-                item.tipo === 'evento' ||
-                checkedStars.includes(item.estrelas);
-
-            return priceMatch && starsMatch;
-        });
-
-        executarOrdenacao();
-        renderizarCards(itensAtuais);
+        return aliases[valor] || [valor];
     }
+
+    function comodidadesCompativeis(item, comodidadesSelecionadas) {
+        if (comodidadesSelecionadas.length === 0) {
+            return true;
+        }
+
+        const textoComodidades = normalizarTexto(item.comodidades || '');
+
+        return comodidadesSelecionadas.every(comodidade => {
+            const aliases = obterAliasesComodidade(comodidade);
+
+            return aliases.some(alias => {
+                return textoComodidades.includes(normalizarTexto(alias));
+            });
+        });
+    }
+
+    function aplicarFiltros() {
+    const maxPrice = priceSlider ? Number(priceSlider.value) : Infinity;
+
+    const checkedStars = Array.from(document.querySelectorAll('.star-filter:checked'))
+        .map(cb => cb.value);
+
+    const checkedAmenities = Array.from(document.querySelectorAll('.amenity-filter:checked'))
+        .map(cb => cb.value);
+
+    itensAtuais = itensPesquisaBase.filter(item => {
+        const priceMatch = item.preco <= maxPrice;
+
+        const starsMatch =
+            checkedStars.length === 0 ||
+            item.tipo === 'voo' ||
+            item.tipo === 'evento' ||
+            checkedStars.includes(item.estrelas);
+
+        const amenitiesMatch =
+            item.tipo !== 'hotel' ||
+            comodidadesCompativeis(item, checkedAmenities);
+
+        return priceMatch && starsMatch && amenitiesMatch;
+    });
+
+    executarOrdenacao();
+    renderizarCards(itensAtuais);
+}
 
     function executarOrdenacao() {
         if (!sortSelect) return;
@@ -476,25 +512,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            if (priceSlider) {
-                priceSlider.value = 1000;
-            }
+    resetBtn.addEventListener('click', () => {
+        if (priceSlider) {
+            priceSlider.value = 1000;
+        }
 
-            if (priceLabel) {
-                priceLabel.textContent = 'até 1000 €';
-            }
+        if (priceLabel) {
+            priceLabel.textContent = 'até 1000 €';
+        }
 
-            document.querySelectorAll('.filters-sidebar input[type="checkbox"]').forEach(cb => {
-                cb.checked = true;
-            });
-
-            itensAtuais = [...itensPesquisaBase];
-
-            executarOrdenacao();
-            renderizarCards(itensAtuais);
+        document.querySelectorAll('.star-filter').forEach(cb => {
+            cb.checked = true;
         });
-    }
+
+        document.querySelectorAll('.amenity-filter').forEach(cb => {
+            cb.checked = false;
+        });
+
+        itensAtuais = [...itensPesquisaBase];
+
+        executarOrdenacao();
+        renderizarCards(itensAtuais);
+    });
+}
 
     // ==========================================================================
     // 8. INIT

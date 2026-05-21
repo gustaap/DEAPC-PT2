@@ -19,6 +19,7 @@
 
     <nav class="nav">
       <a class="nav-btn" href="index.html">Início</a>
+      <a class="nav-btn" id="admin-nav-btn" href="admin.html" style="display: none;">Admin</a>
       <a class="nav-btn login-btn" id="auth-nav-btn" href="login.html">Login</a>
     </nav>
   </header>
@@ -117,6 +118,7 @@
     const entradaInput = document.getElementById('entrada');
     const saidaInput = document.getElementById('saida');
     const authBtn = document.getElementById('auth-nav-btn');
+    const adminBtn = document.getElementById('admin-nav-btn');
 
     // ==========================================
     // 1. Login button becomes Perfil if logged in
@@ -143,8 +145,16 @@
       }
     }
 
+    if (adminBtn) {
+      if (utilizador && utilizador.role === 'admin') {
+        adminBtn.style.display = 'inline-flex';
+      } else {
+        adminBtn.style.display = 'none';
+      }
+    }
+
     // ==========================================
-    // 2. Optional: refill form if returning from Editar
+    // 2. Refill form if returning from Editar
     // ==========================================
     const params = new URLSearchParams(window.location.search);
 
