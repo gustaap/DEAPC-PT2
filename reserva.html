@@ -705,6 +705,8 @@
 
   </div><!-- /pagina -->
 
+  <script src="scripts/database.js"></script>
+
   <script>
   let metodoPagamentoSelecionado = 'cartao';
 
@@ -886,143 +888,7 @@
     }
   }
 
-  const itensDatabase = [
-    {
-      id: 1,
-      tipo: 'hotel',
-      nome: 'Hotel Avenida Palace',
-      destino: 'Lisboa, Portugal',
-      estrelas: '5',
-      preco: 195,
-      capacidadeMax: 4,
-      localizacao: 'Lisboa, Avenida da Liberdade • 0,5 km do centro',
-      comodidades: 'Wi-Fi gratuito • Piscina • Spa • Restaurante'
-    },
-    {
-      id: 2,
-      tipo: 'hotel',
-      nome: 'Hotel Bairro Alto',
-      destino: 'Lisboa, Portugal',
-      estrelas: '4',
-      preco: 145,
-      capacidadeMax: 3,
-      localizacao: 'Lisboa, Chiado • 1,2 km do centro',
-      comodidades: 'Wi-Fi gratuito • Bar • Vista cidade • Animais permitidos'
-    },
-    {
-      id: 3,
-      tipo: 'hotel',
-      nome: 'Residencial Rossio',
-      destino: 'Lisboa, Portugal',
-      estrelas: '3',
-      preco: 55,
-      capacidadeMax: 2,
-      localizacao: 'Lisboa, Baixa • Centro histórico',
-      comodidades: 'Wi-Fi gratuito • Pequeno-almoço incluído • Ar condicionado'
-    },
-    {
-      id: 4,
-      tipo: 'hotel',
-      nome: 'Pestana CR7 Lisboa',
-      destino: 'Lisboa, Portugal',
-      estrelas: '4',
-      preco: 130,
-      capacidadeMax: 2,
-      localizacao: 'Lisboa, Rua do Comércio • 0,3 km do centro',
-      comodidades: 'Wi-Fi gratuito • Ginásio • Bar Desportivo'
-    },
-    {
-      id: 5,
-      tipo: 'hotel',
-      nome: 'Tivoli Avenida Liberdade',
-      destino: 'Lisboa, Portugal',
-      estrelas: '5',
-      preco: 260,
-      capacidadeMax: 4,
-      localizacao: 'Lisboa, Avenida da Liberdade • 0,8 km do centro',
-      comodidades: 'Piscina Exterior • Sky Bar • Spa de Luxo'
-    },
-    {
-      id: 6,
-      tipo: 'hotel',
-      nome: 'Selina Secret Garden',
-      destino: 'Lisboa, Portugal',
-      estrelas: '3',
-      preco: 42,
-      capacidadeMax: 2,
-      localizacao: 'Lisboa, Cais do Sodré • 1,5 km do centro',
-      comodidades: 'Wi-Fi gratuito • Piscina • Cozinha partilhada'
-    },
-    {
-      id: 7,
-      tipo: 'hotel',
-      nome: 'Hotel Mundial',
-      destino: 'Lisboa, Portugal',
-      estrelas: '4',
-      preco: 98,
-      capacidadeMax: 3,
-      localizacao: 'Lisboa, Martim Moniz • 0,1 km do centro',
-      comodidades: 'Rooftop Bar • Estacionamento Grátis'
-    },
-    {
-      id: 8,
-      tipo: 'hotel',
-      nome: 'Myriad by SANA',
-      destino: 'Lisboa, Portugal',
-      estrelas: '5',
-      preco: 310,
-      capacidadeMax: 4,
-      localizacao: 'Lisboa, Parque das Nações • Frente ao Rio',
-      comodidades: 'Vista Panorâmica • Spa • Restaurante Michelin'
-    },
-    {
-      id: 9,
-      tipo: 'voo',
-      nome: 'TAP Air Portugal (LIS ✈ BCN)',
-      origem: 'Lisboa, Portugal',
-      destino: 'Barcelona, Espanha',
-      estrelas: 'voo',
-      preco: 89,
-      capacidadeMax: 120,
-      localizacao: 'Voo LIS ➝ BCN • Direto',
-      comodidades: 'Bagagem de mão • Refeição a bordo'
-    },
-    {
-      id: 10,
-      tipo: 'voo',
-      nome: 'Ryanair (MAD ✈ LIS)',
-      origem: 'Madrid, Espanha',
-      destino: 'Lisboa, Portugal',
-      estrelas: 'voo',
-      preco: 35,
-      capacidadeMax: 160,
-      localizacao: 'Voo MAD ➝ LIS • Económico • Direto',
-      comodidades: 'Artigo pessoal pequeno'
-    },
-    {
-      id: 12,
-      tipo: 'voo',
-      nome: 'EasyJet (LIS ✈ PAR)',
-      origem: 'Lisboa, Portugal',
-      destino: 'Paris, França',
-      estrelas: 'voo',
-      preco: 72,
-      capacidadeMax: 150,
-      localizacao: 'Voo LIS ➝ PAR • Direto',
-      comodidades: 'Bagagem de mão • Lugar standard'
-    },
-    {
-      id: 11,
-      tipo: 'evento',
-      nome: 'Festival NOS Alive',
-      destino: 'Lisboa, Portugal',
-      estrelas: 'evento',
-      preco: 75,
-      capacidadeMax: 5000,
-      localizacao: 'Lisboa, Passeio Marítimo de Algés',
-      comodidades: 'Bilhete geral • Música ao vivo • Entrada diária'
-    }
-  ];
+  const itensDatabase = window.itensDatabase || [];
 
   const params = new URLSearchParams(window.location.search);
 
