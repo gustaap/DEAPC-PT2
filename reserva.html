@@ -284,6 +284,27 @@
     /* Cartão de crédito */
     .form-cartao { display: flex; flex-direction: column; gap: 16px; }
 
+    #nav-auth {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-nav-sair {
+      padding: 7px 16px;
+      border: none;
+      border-radius: 7px;
+      background: #dc2626;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-nav-sair:hover {
+      background: #b91c1c;
+    }
+
     /* Termos */
     .termos {
       display: flex;
@@ -467,12 +488,15 @@
   <nav>
     <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
     <div class="nav-links">
-      <a href="#">Hotéis</a>
-      <a href="#">Voos</a>
-      <a href="#">Eventos</a>
-      <a href="#">Ofertas</a>
-      <a href="login.html" class="btn-nav-login">Login</a>
-      <a href="#" class="btn-nav-conta">Criar conta</a>
+      <a href="resultados.html?tipo=hotel">Hotéis</a>
+      <a href="resultados.html?tipo=voo">Voos</a>
+      <a href="resultados.html?tipo=evento">Eventos</a>
+      <a href="index.html#ofertas">Ofertas</a>
+
+      <span id="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="login.html?mode=register" class="btn-nav-conta">Criar conta</a>
+      </span>
     </div>
   </nav>
 
@@ -648,8 +672,8 @@
         <div class="termos" style="margin-top: 20px;">
           <input type="checkbox" id="termos" />
           <label for="termos">
-            Li e aceito os <a href="#">Termos e Condições</a> e a
-            <a href="#">Política de Privacidade</a> da LAVI Reservas.
+            Li e aceito os <a href="termos.html">Termos e Condições</a> e a
+            <a href="privacidade.html">Política de Privacidade</a> da LAVI Reservas.
           </label>
         </div>
 
@@ -706,6 +730,8 @@
   </div><!-- /pagina -->
 
   <script src="scripts/database.js"></script>
+  <script src="scripts/auth-navbar.js"></script>
+
 
   <script>
   let metodoPagamentoSelecionado = 'cartao';

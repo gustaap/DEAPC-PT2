@@ -26,6 +26,27 @@ body {
   z-index: 100;
 }
 
+#nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-nav-sair {
+  padding: 7px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #dc2626;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-nav-sair:hover {
+  background: #b91c1c;
+}
+
 .logo span {
   color: #f57c00;
   font-size: inherit;
