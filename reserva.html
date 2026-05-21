@@ -426,6 +426,39 @@
     @media (max-width: 420px) {
       .metodos-pag { grid-template-columns: 1fr; }
     }
+    .pagamento-detalhes {
+      display: none;
+      background: var(--fundo);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 12px;
+    }
+
+    .pagamento-detalhes.visivel {
+      display: block;
+    }
+
+    .pagamento-info {
+      color: var(--cinza-texto);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .erro-pagamento {
+      display: none;
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      margin-top: 14px;
+    }
+
+    .erro-pagamento.visivel {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -477,27 +510,33 @@
       <!-- Dados do cliente -->
       <div class="secao">
         <h2><span class="num">1</span> Dados do cliente</h2>
+
         <div class="grid-2">
           <div class="campo">
             <label for="nome">Nome</label>
             <input type="text" id="nome" placeholder="João" />
           </div>
+
           <div class="campo">
             <label for="apelido">Apelido</label>
             <input type="text" id="apelido" placeholder="Silva" />
           </div>
+
           <div class="campo">
             <label for="email">E-mail</label>
             <input type="email" id="email" placeholder="joao@email.com" />
           </div>
+
           <div class="campo">
             <label for="telefone">Telefone</label>
             <input type="tel" id="telefone" placeholder="+351 912 345 678" />
           </div>
+
           <div class="campo">
             <label for="nascimento">Data de nascimento</label>
             <input type="date" id="nascimento" />
           </div>
+
           <div class="campo">
             <label for="nacionalidade">Nacionalidade</label>
             <select id="nacionalidade">
@@ -510,8 +549,9 @@
               <option value="outro">Outro</option>
             </select>
           </div>
+
           <div class="campo campo-full">
-            <label for="pedidos">Pedidos especiais (opcional)</label>
+            <label for="pedidos">Pedidos especiais opcional</label>
             <input type="text" id="pedidos" placeholder="Ex: quarto no piso alto, cama extra..." />
           </div>
         </div>
@@ -522,41 +562,87 @@
         <h2><span class="num">2</span> Método de pagamento</h2>
 
         <div class="metodos-pag">
-          <div class="metodo selecionado" onclick="selecionarMetodo(this)">
+          <div class="metodo selecionado" data-metodo="cartao">
             <span class="icone-pag">💳</span>
             Cartão
           </div>
-          <div class="metodo" onclick="selecionarMetodo(this)">
+
+          <div class="metodo" data-metodo="mbway">
             <span class="icone-pag">🏦</span>
             MB Way
           </div>
-          <div class="metodo" onclick="selecionarMetodo(this)">
+
+          <div class="metodo" data-metodo="referencia">
             <span class="icone-pag">📄</span>
             Referência MB
           </div>
         </div>
 
-        <div class="form-cartao">
-          <div class="grid-2">
-            <div class="campo campo-full">
-              <label for="num-cartao">Número do cartão</label>
-              <input type="text" id="num-cartao" placeholder="1234 5678 9012 3456" maxlength="19" />
+        <!-- Cartão -->
+        <div class="pagamento-detalhes visivel" id="pagamento-cartao">
+          <div class="form-cartao">
+            <div class="grid-2">
+              <div class="campo campo-full">
+                <label for="num-cartao">Número do cartão</label>
+                <input
+                  type="text"
+                  id="num-cartao"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19" />
+              </div>
+
+              <div class="campo campo-full">
+                <label for="titular">Nome do titular</label>
+                <input
+                  type="text"
+                  id="titular"
+                  placeholder="JOÃO SILVA" />
+              </div>
             </div>
-            <div class="campo campo-full">
-              <label for="titular">Nome do titular</label>
-              <input type="text" id="titular" placeholder="JOÃO SILVA" />
+
+            <div class="grid-3">
+              <div class="campo">
+                <label for="validade">Validade</label>
+                <input
+                  type="text"
+                  id="validade"
+                  placeholder="MM/AA"
+                  maxlength="5" />
+              </div>
+
+              <div class="campo">
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  placeholder="123"
+                  maxlength="4" />
+              </div>
             </div>
           </div>
-          <div class="grid-3">
-            <div class="campo">
-              <label for="validade">Validade</label>
-              <input type="text" id="validade" placeholder="MM/AA" maxlength="5" />
-            </div>
-            <div class="campo">
-              <label for="cvv">CVV</label>
-              <input type="text" id="cvv" placeholder="123" maxlength="4" />
-            </div>
+        </div>
+
+        <!-- MB Way -->
+        <div class="pagamento-detalhes" id="pagamento-mbway">
+          <div class="campo">
+            <label for="telefone-mbway">Número associado ao MB Way</label>
+            <input
+              type="tel"
+              id="telefone-mbway"
+              placeholder="+351 912 345 678" />
           </div>
+
+          <p class="pagamento-info" style="margin-top: 10px;">
+            Será enviada uma confirmação de pagamento para a aplicação MB Way.
+          </p>
+        </div>
+
+        <!-- Referência MB -->
+        <div class="pagamento-detalhes" id="pagamento-referencia">
+          <p class="pagamento-info">
+            Ao confirmares a reserva, será gerada uma referência Multibanco simulada.
+            A reserva ficará pendente até ao pagamento.
+          </p>
         </div>
 
         <div class="termos" style="margin-top: 20px;">
@@ -566,6 +652,8 @@
             <a href="#">Política de Privacidade</a> da LAVI Reservas.
           </label>
         </div>
+
+        <div class="erro-pagamento" id="erro-pagamento"></div>
       </div>
 
     </div><!-- /formulario -->
@@ -606,7 +694,7 @@
 
   <div class="badge-seguro">🔒 Pagamento seguro e encriptado</div>
 
-  <button class="btn-confirmar" onclick="window.location.href='historico.html'">
+  <button class="btn-confirmar" id="btn-confirmar-reserva">
     Confirmar reserva
   </button>
 
@@ -618,9 +706,184 @@
   </div><!-- /pagina -->
 
   <script>
+  let metodoPagamentoSelecionado = 'cartao';
+
   function selecionarMetodo(el) {
-    document.querySelectorAll('.metodo').forEach(m => m.classList.remove('selecionado'));
+    metodoPagamentoSelecionado = el.dataset.metodo;
+
+    document.querySelectorAll('.metodo').forEach(m => {
+      m.classList.remove('selecionado');
+    });
+
     el.classList.add('selecionado');
+
+    document.querySelectorAll('.pagamento-detalhes').forEach(secao => {
+      secao.classList.remove('visivel');
+    });
+
+    const secaoSelecionada = document.getElementById(`pagamento-${metodoPagamentoSelecionado}`);
+
+    if (secaoSelecionada) {
+      secaoSelecionada.classList.add('visivel');
+    }
+
+    limparErroPagamento();
+  }
+
+  function mostrarErroPagamento(texto) {
+    const erro = document.getElementById('erro-pagamento');
+
+    if (!erro) return;
+
+    erro.textContent = texto;
+    erro.classList.add('visivel');
+  }
+
+  function limparErroPagamento() {
+    const erro = document.getElementById('erro-pagamento');
+
+    if (!erro) return;
+
+    erro.textContent = '';
+    erro.classList.remove('visivel');
+  }
+
+  function apenasNumeros(valor) {
+    return String(valor).replace(/\D/g, '');
+  }
+
+  function validarDadosCliente() {
+    const nomeInput = document.getElementById('nome');
+    const apelidoInput = document.getElementById('apelido');
+    const emailInput = document.getElementById('email');
+    const telefoneInput = document.getElementById('telefone');
+
+    if (!nomeInput || !apelidoInput || !emailInput || !telefoneInput) {
+      mostrarErroPagamento('Erro interno: os campos de dados do cliente não existem na página.');
+      return false;
+    }
+
+    const nome = nomeInput.value.trim();
+    const apelido = apelidoInput.value.trim();
+    const email = emailInput.value.trim();
+    const telefone = telefoneInput.value.trim();
+
+    if (!nome || !apelido || !email || !telefone) {
+      mostrarErroPagamento('Preenche os dados principais do cliente: nome, apelido, e-mail e telefone.');
+      return false;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      mostrarErroPagamento('Insere um e-mail válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarCartao() {
+    const numeroCartao = apenasNumeros(document.getElementById('num-cartao').value);
+    const titular = document.getElementById('titular').value.trim();
+    const validade = document.getElementById('validade').value.trim();
+    const cvv = apenasNumeros(document.getElementById('cvv').value);
+
+    if (numeroCartao.length < 16) {
+      mostrarErroPagamento('Insere um número de cartão válido com 16 dígitos.');
+      return false;
+    }
+
+    if (!titular) {
+      mostrarErroPagamento('Insere o nome do titular do cartão.');
+      return false;
+    }
+
+    if (!/^\d{2}\/\d{2}$/.test(validade)) {
+      mostrarErroPagamento('Insere a validade no formato MM/AA.');
+      return false;
+    }
+
+    if (cvv.length < 3) {
+      mostrarErroPagamento('Insere um CVV válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarMBWay() {
+    const telefoneMBWay = apenasNumeros(document.getElementById('telefone-mbway').value);
+
+    if (telefoneMBWay.length < 9) {
+      mostrarErroPagamento('Insere um número MB Way válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarTermos() {
+    const termos = document.getElementById('termos');
+
+    if (!termos.checked) {
+      mostrarErroPagamento('Tens de aceitar os Termos e Condições para confirmar a reserva.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarPagamento() {
+    limparErroPagamento();
+
+    if (!validarDadosCliente()) {
+      return false;
+    }
+
+    if (metodoPagamentoSelecionado === 'cartao' && !validarCartao()) {
+      return false;
+    }
+
+    if (metodoPagamentoSelecionado === 'mbway' && !validarMBWay()) {
+      return false;
+    }
+
+    if (!validarTermos()) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function formatarInputsPagamento() {
+    const numCartao = document.getElementById('num-cartao');
+    const validade = document.getElementById('validade');
+    const cvv = document.getElementById('cvv');
+
+    if (numCartao) {
+      numCartao.addEventListener('input', () => {
+        let valor = apenasNumeros(numCartao.value).slice(0, 16);
+        valor = valor.replace(/(\d{4})(?=\d)/g, '$1 ');
+        numCartao.value = valor;
+      });
+    }
+
+    if (validade) {
+      validade.addEventListener('input', () => {
+        let valor = apenasNumeros(validade.value).slice(0, 4);
+
+        if (valor.length >= 3) {
+          valor = valor.slice(0, 2) + '/' + valor.slice(2);
+        }
+
+        validade.value = valor;
+      });
+    }
+
+    if (cvv) {
+      cvv.addEventListener('input', () => {
+        cvv.value = apenasNumeros(cvv.value).slice(0, 4);
+      });
+    }
   }
 
   const itensDatabase = [
@@ -902,6 +1165,31 @@
   }
 
   atualizarResumoReserva();
+  document.querySelectorAll('.metodo').forEach(metodo => {
+    metodo.addEventListener('click', () => {
+      selecionarMetodo(metodo);
+    });
+  });
+
+  formatarInputsPagamento();
+
+  const btnConfirmarReserva = document.getElementById('btn-confirmar-reserva');
+
+  if (btnConfirmarReserva) {
+    btnConfirmarReserva.addEventListener('click', () => {
+      if (!validarPagamento()) {
+        return;
+      }
+
+      if (metodoPagamentoSelecionado === 'referencia') {
+        alert('Reserva criada com referência Multibanco simulada. Estado: pendente de pagamento.');
+      } else {
+        alert('Reserva confirmada com sucesso.');
+      }
+
+      window.location.href = 'historico.html';
+    });
+  }
 </script>
 
 </body>
