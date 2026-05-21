@@ -172,6 +172,23 @@ document.addEventListener('DOMContentLoaded', () => {
             textoBotao: 'Selecionar'
         },
         {
+            id: 12,
+            tipo: 'voo',
+            nome: 'EasyJet (LIS ✈ PAR)',
+            origem: 'Lisboa, Portugal',
+            destino: 'Paris, França',
+            estrelas: 'voo',
+            preco: 72,
+            capacidadeMax: 150,
+            disponivelDe: '2026-01-01',
+            disponivelAte: '2026-12-31',
+            localizacao: 'Voo LIS ➝ PAR • Direto',
+            comodidades: 'Bagagem de mão • Lugar standard',
+            imagem: 'images/easyjet.jpg',
+            destaque: false,
+            textoBotao: 'Selecionar'
+        },
+        {
             id: 11,
             tipo: 'evento',
             nome: 'Festival NOS Alive',

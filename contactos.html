@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAVI Reservas — Contactos</title>
+  <link rel="stylesheet" href="styles/style.css">
+
+  <style>
+    body {
+      background: #f4f6f9;
+      color: #1a1f2e;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .contact-page {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 36px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .contact-page h1 {
+      margin-bottom: 10px;
+    }
+
+    .contact-page p {
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .contact-info {
+      background: #f4f6f9;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .contact-info h2 {
+      margin-bottom: 12px;
+      color: #1a6bcc;
+    }
+
+    .contact-info p {
+      margin-bottom: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: 1.5px solid #d8dde6;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      height: 44px;
+      background: #1a6bcc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #155bb0;
+    }
+
+    .mensagem-contacto {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #dcfce7;
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .mensagem-contacto.visivel {
+      display: block;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #1a6bcc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">LAVI <span>| Reservas</span></div>
+
+    <nav class="nav">
+      <a class="nav-btn" href="index.html">Início</a>
+      <a class="nav-btn login-btn" href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <a href="index.html" class="back-link">← Voltar ao início</a>
+
+    <h1>Contactos</h1>
+    <p>
+      Entra em contacto com a equipa LAVI Reservas para apoio, dúvidas ou informações
+      sobre reservas.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Informações</h2>
+
+        <p><strong>E-mail:</strong> apoio@lavireservas.pt</p>
+        <p><strong>Telefone:</strong> +351 912 345 678</p>
+        <p><strong>Morada:</strong> Porto, Portugal</p>
+        <p><strong>Horário:</strong> Segunda a sexta, 09:00–18:00</p>
+      </div>
+
+      <form class="contact-form" id="contact-form">
+        <label>
+          Nome
+          <input type="text" id="contact-nome" required>
+        </label>
+
+        <label>
+          E-mail
+          <input type="email" id="contact-email" required>
+        </label>
+
+        <label>
+          Mensagem
+          <textarea id="contact-mensagem" required></textarea>
+        </label>
+
+        <button type="submit">Enviar mensagem</button>
+
+        <div class="mensagem-contacto" id="mensagem-contacto">
+          Mensagem enviada com sucesso. A equipa LAVI responderá em breve.
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      © 2026 LAVI Reservas ·
+      <a href="termos.html">Termos</a> ·
+      <a href="privacidade.html">Privacidade</a> ·
+      <a href="contactos.html">Contactos</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      document.getElementById('mensagem-contacto').classList.add('visivel');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

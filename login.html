@@ -68,18 +68,48 @@
       letter-spacing: 0.05em;
     }
 
-    main {
+    main.login-hero {
+      position: relative;
       flex: 1;
+      min-height: calc(100vh - 60px);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 16px;
+      overflow: hidden;
+    }
+
+    .login-bg-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 1s ease-in-out, transform 4s ease;
+      z-index: 1;
+    }
+
+    .login-bg-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .login-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 22, 35, 0.45);
+      z-index: 2;
     }
 
     .login-card {
+      position: relative;
+      z-index: 3;
       background: var(--branco);
       border-radius: var(--radius);
       box-shadow: var(--sombra);
+      border: 1px solid var(--cinza-borda);
       padding: 48px 40px;
       width: 100%;
       max-width: 420px;
@@ -285,7 +315,14 @@
     <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
   </nav>
 
-  <main>
+  <main class="login-hero">
+    <div class="login-bg-slide active" style="background-image: url('images/paris-hero.jpg');"></div>
+    <div class="login-bg-slide" style="background-image: url('images/sagrada1-hero.jpg');"></div>
+    <div class="login-bg-slide" style="background-image: url('images/coliseu-hero.jpg');"></div>
+    <div class="login-bg-slide" style="background-image: url('images/opera-hero.jpg');"></div>
+
+    <div class="login-overlay"></div>
+
     <div class="login-card">
       <h1 id="titulo-auth">Bem-vindo de volta</h1>
       <p class="subtitulo" id="subtitulo-auth">
@@ -572,6 +609,19 @@
 
     if (parametros.get('mode') === 'register' || parametros.get('modo') === 'criar') {
       mudarModo(true);
+    }
+    const loginSlides = document.querySelectorAll('.login-bg-slide');
+
+    if (loginSlides.length > 0) {
+      let slideAtualLogin = 0;
+
+      setInterval(() => {
+        loginSlides[slideAtualLogin].classList.remove('active');
+
+        slideAtualLogin = (slideAtualLogin + 1) % loginSlides.length;
+
+        loginSlides[slideAtualLogin].classList.add('active');
+      }, 4000);
     }
   </script>
 
