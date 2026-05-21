@@ -8,7 +8,483 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/style.css" />
+<<<<<<< HEAD
   <link rel="stylesheet" href="styles/reserva.css" />
+=======
+  <style>
+    :root {
+      --azul:       #1a6bcc;
+      --azul-hover: #155bb0;
+      --laranja:    #f57c00;
+      --verde:      #16a34a;
+      --fundo:      #f4f6f9;
+      --branco:     #ffffff;
+      --cinza-borda:#d8dde6;
+      --cinza-texto:#6b7280;
+      --texto:      #1a1f2e;
+      --sombra:     0 4px 24px rgba(0,0,0,0.07);
+      --radius:     12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--texto);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--laranja);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-left: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--texto); }
+
+    .btn-nav-login {
+      padding: 7px 16px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 7px;
+      color: var(--texto) !important;
+      font-weight: 500;
+    }
+
+    .btn-nav-conta {
+      padding: 7px 16px;
+      background: var(--azul);
+      border-radius: 7px;
+      color: var(--branco) !important;
+      font-weight: 600;
+    }
+
+    /* ── Progresso ── */
+    .barra-progresso {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .passos {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .passo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo { color: var(--azul); font-weight: 600; }
+    .passo.feito { color: var(--verde); }
+
+    .passo-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.78rem;
+      border: 2px solid var(--cinza-borda);
+      background: var(--branco);
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo .passo-num {
+      border-color: var(--azul);
+      background: var(--azul);
+      color: var(--branco);
+    }
+
+    .passo.feito .passo-num {
+      border-color: var(--verde);
+      background: var(--verde);
+      color: var(--branco);
+    }
+
+    .passo-linha {
+      width: 48px;
+      height: 2px;
+      background: var(--cinza-borda);
+      margin: 0 8px;
+    }
+
+    /* ── Layout ── */
+    .pagina {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 16px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Secções do formulário ── */
+    .secao {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    .secao h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .secao h2 .num {
+      width: 26px;
+      height: 26px;
+      background: var(--azul);
+      color: var(--branco);
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Grid de campos */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .campo-full { grid-column: 1 / -1; }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .campo label {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    .campo input,
+    .campo select {
+      height: 44px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 0 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: var(--texto);
+      outline: none;
+      background: var(--branco);
+      transition: border-color 0.2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus { border-color: var(--azul); }
+
+    .campo input::placeholder { color: #b0b8c9; }
+
+    /* Métodos de pagamento */
+    .metodos-pag {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metodo {
+      border: 2px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      font-weight: 500;
+    }
+
+    .metodo:hover { border-color: var(--azul); background: #f0f6ff; }
+
+    .metodo.selecionado {
+      border-color: var(--azul);
+      background: #e8f0fb;
+      color: var(--azul);
+    }
+
+    .metodo .icone-pag { font-size: 1.6rem; }
+
+    /* Cartão de crédito */
+    .form-cartao { display: flex; flex-direction: column; gap: 16px; }
+
+    #nav-auth {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-nav-sair {
+      padding: 7px 16px;
+      border: none;
+      border-radius: 7px;
+      background: #dc2626;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-nav-sair:hover {
+      background: #b91c1c;
+    }
+
+    /* Termos */
+    .termos {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: var(--cinza-texto);
+      margin-top: 4px;
+    }
+
+    .termos input[type="checkbox"] {
+      accent-color: var(--azul);
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .termos a { color: var(--azul); text-decoration: none; }
+    .termos a:hover { text-decoration: underline; }
+
+    /* ── Resumo lateral ── */
+    .resumo {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 24px 22px;
+      position: sticky;
+      top: 80px;
+    }
+
+    .resumo h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item {
+      background: var(--fundo);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item .titulo {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .resumo-item .detalhe {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+    }
+
+    .resumo-item .estrelas { color: var(--laranja); font-size: 0.78rem; }
+
+    .linha-preco {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      color: var(--cinza-texto);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .linha-preco:last-of-type { border-bottom: none; }
+
+    .linha-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 0 4px;
+      color: var(--texto);
+      border-top: 2px solid var(--cinza-borda);
+      margin-top: 4px;
+    }
+
+    .badge-seguro {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--verde);
+      background: #dcfce7;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+
+    .btn-confirmar {
+      width: 100%;
+      height: 48px;
+      background: var(--azul);
+      color: var(--branco);
+      border: none;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-confirmar:hover { background: var(--azul-hover); }
+
+    .nota-cancelamento {
+      font-size: 0.76rem;
+      color: var(--cinza-texto);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ── Responsividade ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .barra-progresso { padding: 12px 16px; }
+      .passo-linha { width: 24px; }
+
+      .pagina {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+
+      .resumo { position: static; }
+
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+      .metodos-pag { grid-template-columns: 1fr 1fr 1fr; }
+
+      .secao { padding: 20px 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .metodos-pag { grid-template-columns: 1fr; }
+    }
+    .pagamento-detalhes {
+      display: none;
+      background: var(--fundo);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 12px;
+    }
+
+    .pagamento-detalhes.visivel {
+      display: block;
+    }
+
+    .pagamento-info {
+      color: var(--cinza-texto);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .erro-pagamento {
+      display: none;
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      margin-top: 14px;
+    }
+
+    .erro-pagamento.visivel {
+      display: block;
+    }
+  </style>
+>>>>>>> 8876b5cd00de0c3ef1905584c61a3d6bf84d6e88
 </head>
 <body>
 
@@ -16,12 +492,15 @@
   <nav>
     <a href="index.html" class="logo">LAVI <span>| Reservas</span></a>
     <div class="nav-links">
-      <a href="#">Hotéis</a>
-      <a href="#">Voos</a>
-      <a href="#">Eventos</a>
-      <a href="#">Ofertas</a>
-      <a href="login.html" class="btn-nav-login">Login</a>
-      <a href="#" class="btn-nav-conta">Criar conta</a>
+      <a href="resultados.html?tipo=hotel">Hotéis</a>
+      <a href="resultados.html?tipo=voo">Voos</a>
+      <a href="resultados.html?tipo=evento">Eventos</a>
+      <a href="index.html#ofertas">Ofertas</a>
+
+      <span id="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="login.html?mode=register" class="btn-nav-conta">Criar conta</a>
+      </span>
     </div>
   </nav>
 
@@ -197,8 +676,8 @@
         <div class="termos" style="margin-top: 20px;">
           <input type="checkbox" id="termos" />
           <label for="termos">
-            Li e aceito os <a href="#">Termos e Condições</a> e a
-            <a href="#">Política de Privacidade</a> da LAVI Reservas.
+            Li e aceito os <a href="termos.html">Termos e Condições</a> e a
+            <a href="privacidade.html">Política de Privacidade</a> da LAVI Reservas.
           </label>
         </div>
 
@@ -255,8 +734,376 @@
   </div><!-- /pagina -->
 
   <script src="scripts/database.js"></script>
+<<<<<<< HEAD
   <script src="scripts/reserva.js"></script>
  
+=======
+  <script src="scripts/auth-navbar.js"></script>
+
+
+  <script>
+  let metodoPagamentoSelecionado = 'cartao';
+
+  function selecionarMetodo(el) {
+    metodoPagamentoSelecionado = el.dataset.metodo;
+
+    document.querySelectorAll('.metodo').forEach(m => {
+      m.classList.remove('selecionado');
+    });
+
+    el.classList.add('selecionado');
+
+    document.querySelectorAll('.pagamento-detalhes').forEach(secao => {
+      secao.classList.remove('visivel');
+    });
+
+    const secaoSelecionada = document.getElementById(`pagamento-${metodoPagamentoSelecionado}`);
+
+    if (secaoSelecionada) {
+      secaoSelecionada.classList.add('visivel');
+    }
+
+    limparErroPagamento();
+  }
+
+  function mostrarErroPagamento(texto) {
+    const erro = document.getElementById('erro-pagamento');
+
+    if (!erro) return;
+
+    erro.textContent = texto;
+    erro.classList.add('visivel');
+  }
+
+  function limparErroPagamento() {
+    const erro = document.getElementById('erro-pagamento');
+
+    if (!erro) return;
+
+    erro.textContent = '';
+    erro.classList.remove('visivel');
+  }
+
+  function apenasNumeros(valor) {
+    return String(valor).replace(/\D/g, '');
+  }
+
+  function validarDadosCliente() {
+    const nomeInput = document.getElementById('nome');
+    const apelidoInput = document.getElementById('apelido');
+    const emailInput = document.getElementById('email');
+    const telefoneInput = document.getElementById('telefone');
+
+    if (!nomeInput || !apelidoInput || !emailInput || !telefoneInput) {
+      mostrarErroPagamento('Erro interno: os campos de dados do cliente não existem na página.');
+      return false;
+    }
+
+    const nome = nomeInput.value.trim();
+    const apelido = apelidoInput.value.trim();
+    const email = emailInput.value.trim();
+    const telefone = telefoneInput.value.trim();
+
+    if (!nome || !apelido || !email || !telefone) {
+      mostrarErroPagamento('Preenche os dados principais do cliente: nome, apelido, e-mail e telefone.');
+      return false;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      mostrarErroPagamento('Insere um e-mail válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarCartao() {
+    const numeroCartao = apenasNumeros(document.getElementById('num-cartao').value);
+    const titular = document.getElementById('titular').value.trim();
+    const validade = document.getElementById('validade').value.trim();
+    const cvv = apenasNumeros(document.getElementById('cvv').value);
+
+    if (numeroCartao.length < 16) {
+      mostrarErroPagamento('Insere um número de cartão válido com 16 dígitos.');
+      return false;
+    }
+
+    if (!titular) {
+      mostrarErroPagamento('Insere o nome do titular do cartão.');
+      return false;
+    }
+
+    if (!/^\d{2}\/\d{2}$/.test(validade)) {
+      mostrarErroPagamento('Insere a validade no formato MM/AA.');
+      return false;
+    }
+
+    if (cvv.length < 3) {
+      mostrarErroPagamento('Insere um CVV válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarMBWay() {
+    const telefoneMBWay = apenasNumeros(document.getElementById('telefone-mbway').value);
+
+    if (telefoneMBWay.length < 9) {
+      mostrarErroPagamento('Insere um número MB Way válido.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarTermos() {
+    const termos = document.getElementById('termos');
+
+    if (!termos.checked) {
+      mostrarErroPagamento('Tens de aceitar os Termos e Condições para confirmar a reserva.');
+      return false;
+    }
+
+    return true;
+  }
+
+  function validarPagamento() {
+    limparErroPagamento();
+
+    if (!validarDadosCliente()) {
+      return false;
+    }
+
+    if (metodoPagamentoSelecionado === 'cartao' && !validarCartao()) {
+      return false;
+    }
+
+    if (metodoPagamentoSelecionado === 'mbway' && !validarMBWay()) {
+      return false;
+    }
+
+    if (!validarTermos()) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function formatarInputsPagamento() {
+    const numCartao = document.getElementById('num-cartao');
+    const validade = document.getElementById('validade');
+    const cvv = document.getElementById('cvv');
+
+    if (numCartao) {
+      numCartao.addEventListener('input', () => {
+        let valor = apenasNumeros(numCartao.value).slice(0, 16);
+        valor = valor.replace(/(\d{4})(?=\d)/g, '$1 ');
+        numCartao.value = valor;
+      });
+    }
+
+    if (validade) {
+      validade.addEventListener('input', () => {
+        let valor = apenasNumeros(validade.value).slice(0, 4);
+
+        if (valor.length >= 3) {
+          valor = valor.slice(0, 2) + '/' + valor.slice(2);
+        }
+
+        validade.value = valor;
+      });
+    }
+
+    if (cvv) {
+      cvv.addEventListener('input', () => {
+        cvv.value = apenasNumeros(cvv.value).slice(0, 4);
+      });
+    }
+  }
+
+  const itensDatabase = window.itensDatabase || [];
+
+  const params = new URLSearchParams(window.location.search);
+
+  const id = Number(params.get('id'));
+  const tipo = params.get('tipo') || '';
+  const entrada = params.get('entrada') || '';
+  const saida = params.get('saida') || '';
+  const pessoas = Number(params.get('pessoas')) || 1;
+
+  const item = itensDatabase.find(i => i.id === id && i.tipo === tipo) ||
+               itensDatabase.find(i => i.id === id);
+
+  function formatarMoeda(valor) {
+    return valor.toLocaleString('pt-PT', {
+      style: 'currency',
+      currency: 'EUR'
+    });
+  }
+
+  function formatarData(dataISO) {
+    if (!dataISO) return '';
+
+    const data = new Date(dataISO);
+
+    return data.toLocaleDateString('pt-PT', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+  }
+
+  function calcularNoites(entrada, saida) {
+    if (!entrada || !saida) return 1;
+
+    const dataEntrada = new Date(entrada);
+    const dataSaida = new Date(saida);
+    const diferencaMs = dataSaida - dataEntrada;
+    const noites = Math.ceil(diferencaMs / (1000 * 60 * 60 * 24));
+
+    return Math.max(noites, 1);
+  }
+
+  function calcularSubtotal(item) {
+    const noites = calcularNoites(entrada, saida);
+
+    if (item.tipo === 'hotel') {
+      return item.preco * noites;
+    }
+
+    return item.preco * pessoas;
+  }
+
+  function calcularTaxas(item, subtotal) {
+    if (item.tipo === 'hotel') {
+      return subtotal * 0.09;
+    }
+
+    return 0;
+  }
+
+  function atualizarResumoReserva() {
+    if (!item) {
+      document.getElementById('reserva-titulo').textContent = 'Reserva não encontrada';
+      document.getElementById('reserva-detalhe').innerHTML =
+        'Volta aos resultados e seleciona uma opção válida.';
+      return;
+    }
+
+    const noites = calcularNoites(entrada, saida);
+    const subtotal = calcularSubtotal(item);
+    const taxas = calcularTaxas(item, subtotal);
+    const total = subtotal + taxas;
+
+    let icone = '';
+    let detalhe = '';
+    let precoLabel = '';
+    let taxasLabel = '';
+    let taxasTexto = '';
+    let extraLabel = '';
+    let extraTexto = '';
+    let nota = '';
+
+    if (item.tipo === 'hotel') {
+      icone = '★'.repeat(Number(item.estrelas));
+
+      detalhe = `
+        ${item.destino}<br>
+        ${formatarData(entrada)} – ${formatarData(saida)} · ${noites} noite${noites !== 1 ? 's' : ''}<br>
+        ${pessoas} pessoa${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${noites} noite${noites !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas e impostos';
+      taxasTexto = formatarMoeda(taxas);
+      extraLabel = 'Serviços';
+      extraTexto = 'incluídos';
+      nota = 'Cancelamento gratuito até 48h antes do check-in.<br>Sem taxas ocultas.';
+    }
+
+    if (item.tipo === 'voo') {
+      icone = '✈';
+
+      detalhe = `
+        ${item.origem} para ${item.destino}<br>
+        ${formatarData(entrada)}<br>
+        ${pessoas} passageiro${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${pessoas} passageiro${pessoas !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas aeroportuárias';
+      taxasTexto = 'incluídas';
+      extraLabel = 'Bagagem';
+      extraTexto = 'incluída';
+      nota = 'Alterações sujeitas às condições da companhia aérea.<br>Sem taxas ocultas.';
+    }
+
+    if (item.tipo === 'evento') {
+      icone = '🎟';
+
+      detalhe = `
+        ${item.destino}<br>
+        ${formatarData(entrada)}<br>
+        ${pessoas} bilhete${pessoas !== 1 ? 's' : ''}<br>
+        ${item.comodidades}
+      `;
+
+      precoLabel = `${item.preco} € × ${pessoas} bilhete${pessoas !== 1 ? 's' : ''}`;
+      taxasLabel = 'Taxas de serviço';
+      taxasTexto = 'incluídas';
+      extraLabel = 'Tipo de entrada';
+      extraTexto = 'geral';
+      nota = 'Bilhete válido apenas para a data indicada.<br>Sem taxas ocultas.';
+    }
+
+    document.getElementById('reserva-icone').textContent = icone;
+    document.getElementById('reserva-titulo').textContent = item.nome;
+    document.getElementById('reserva-detalhe').innerHTML = detalhe;
+
+    document.getElementById('reserva-preco-label').textContent = precoLabel;
+    document.getElementById('reserva-subtotal').textContent = formatarMoeda(subtotal);
+
+    document.getElementById('reserva-taxas-label').textContent = taxasLabel;
+    document.getElementById('reserva-taxas').textContent = taxasTexto;
+
+    document.getElementById('reserva-extra-label').textContent = extraLabel;
+    document.getElementById('reserva-extra').textContent = extraTexto;
+
+    document.getElementById('reserva-total').textContent = formatarMoeda(total);
+    document.getElementById('reserva-nota').innerHTML = nota;
+  }
+
+  atualizarResumoReserva();
+  document.querySelectorAll('.metodo').forEach(metodo => {
+    metodo.addEventListener('click', () => {
+      selecionarMetodo(metodo);
+    });
+  });
+
+  formatarInputsPagamento();
+
+  const btnConfirmarReserva = document.getElementById('btn-confirmar-reserva');
+
+  if (btnConfirmarReserva) {
+    btnConfirmarReserva.addEventListener('click', () => {
+      if (!validarPagamento()) {
+        return;
+      }
+
+      if (metodoPagamentoSelecionado === 'referencia') {
+        alert('Reserva criada com referência Multibanco simulada. Estado: pendente de pagamento.');
+      } else {
+        alert('Reserva confirmada com sucesso.');
+      }
+
+      window.location.href = 'historico.html';
+    });
+  }
+</script>
+>>>>>>> 8876b5cd00de0c3ef1905584c61a3d6bf84d6e88
 
 </body>
 </html>
