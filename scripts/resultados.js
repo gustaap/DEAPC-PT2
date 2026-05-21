@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             disponivelAte: '2026-12-31',
             localizacao: 'Lisboa, Baixa • Centro histórico',
             comodidades: 'Wi-Fi gratuito • Pequeno-almoço incluído • Ar condicionado',
-            imagem: 'images/rossio.webp',
+            imagem: 'images/rossio.jpg',
             destaque: false,
             textoBotao: 'Reservar'
         },
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             disponivelAte: '2026-12-31',
             localizacao: 'Lisboa, Avenida da Liberdade • 0,8 km do centro',
             comodidades: 'Piscina Exterior • Sky Bar • Spa de Luxo',
-            imagem: 'images/tivoli.webp',
+            imagem: 'images/tivoli.jpg',
             destaque: true,
             textoBotao: 'Reservar'
         },
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             disponivelAte: '2026-12-31',
             localizacao: 'Lisboa, Martim Moniz • 0,1 km do centro',
             comodidades: 'Rooftop Bar • Estacionamento Grátis',
-            imagem: 'images/mundial.webp',
+            imagem: 'images/mundial.jpg',
             destaque: false,
             textoBotao: 'Reservar'
         },
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             disponivelAte: '2026-12-31',
             localizacao: 'Lisboa, Parque das Nações • Frente ao Rio',
             comodidades: 'Vista Panorâmica • Spa • Restaurante Michelin',
-            imagem: 'images/myriad.webp',
+            imagem: 'images/myriad.jpg',
             destaque: true,
             textoBotao: 'Reservar'
         },
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderizarCards(lista) {
         hotelListContainer.innerHTML = '';
-
+        
         if (lista.length === 0) {
             hotelListContainer.innerHTML = `
                 <p style="padding: 40px; text-align: center; color: #888; font-weight: bold;">

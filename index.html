@@ -15,7 +15,7 @@
 <body>
 
   <header class="header">
-    <div class="logo">LAVI Reservas</div>
+    <div class="logo">LAVI <span>| Reservas</span></div>
 
     <nav class="nav">
       <a class="nav-btn" href="index.html">Início</a>
@@ -26,11 +26,21 @@
 
   <main>
     <section class="hero">
-      <h1>Reserve com confiança</h1>
-      <p>Hotéis, voos e eventos numa só plataforma.</p>
+      <div class="hero-slide active" style="background-image: url('images/guell-hero.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('images/sagrada-hero.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/palacio-hero.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/vicens-hero.jpg');"></div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Reserve com confiança</h1>
+        <p>Hotéis, voos e eventos numa só plataforma.</p>
+        <a href="#pesquisa" class="hero-btn">Começar a pesquisar</a>
+      </div>
     </section>
 
-    <section class="pesquisa">
+    <section class="pesquisa" id="pesquisa">
       <h2>Pesquisar reserva</h2>
 
       <form action="resultados.html" method="get">
@@ -229,6 +239,23 @@
         }
       });
     }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.hero-slide');
+
+    if (slides.length === 0) return;
+
+    let slideAtual = 0;
+
+    setInterval(() => {
+      slides[slideAtual].classList.remove('active');
+
+      slideAtual = (slideAtual + 1) % slides.length;
+
+      slides[slideAtual].classList.add('active');
+    }, 4000);
   });
 </script>
 
