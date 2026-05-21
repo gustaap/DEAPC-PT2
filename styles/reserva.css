@@ -1,0 +1,450 @@
+:root {
+      --azul:       #1a6bcc;
+      --azul-hover: #155bb0;
+      --laranja:    #f57c00;
+      --verde:      #16a34a;
+      --fundo:      #f4f6f9;
+      --branco:     #ffffff;
+      --cinza-borda:#d8dde6;
+      --cinza-texto:#6b7280;
+      --texto:      #1a1f2e;
+      --sombra:     0 4px 24px rgba(0,0,0,0.07);
+      --radius:     12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--texto);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--laranja);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-left: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--texto); }
+
+    .btn-nav-login {
+      padding: 7px 16px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 7px;
+      color: var(--texto) !important;
+      font-weight: 500;
+    }
+
+    .btn-nav-conta {
+      padding: 7px 16px;
+      background: var(--azul);
+      border-radius: 7px;
+      color: var(--branco) !important;
+      font-weight: 600;
+    }
+
+    /* ── Progresso ── */
+    .barra-progresso {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .passos {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .passo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo { color: var(--azul); font-weight: 600; }
+    .passo.feito { color: var(--verde); }
+
+    .passo-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.78rem;
+      border: 2px solid var(--cinza-borda);
+      background: var(--branco);
+      color: var(--cinza-texto);
+    }
+
+    .passo.ativo .passo-num {
+      border-color: var(--azul);
+      background: var(--azul);
+      color: var(--branco);
+    }
+
+    .passo.feito .passo-num {
+      border-color: var(--verde);
+      background: var(--verde);
+      color: var(--branco);
+    }
+
+    .passo-linha {
+      width: 48px;
+      height: 2px;
+      background: var(--cinza-borda);
+      margin: 0 8px;
+    }
+
+    /* ── Layout ── */
+    .pagina {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 16px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Secções do formulário ── */
+    .secao {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    .secao h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .secao h2 .num {
+      width: 26px;
+      height: 26px;
+      background: var(--azul);
+      color: var(--branco);
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Grid de campos */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .campo-full { grid-column: 1 / -1; }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .campo label {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    .campo input,
+    .campo select {
+      height: 44px;
+      border: 1.5px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 0 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: var(--texto);
+      outline: none;
+      background: var(--branco);
+      transition: border-color 0.2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus { border-color: var(--azul); }
+
+    .campo input::placeholder { color: #b0b8c9; }
+
+    /* Métodos de pagamento */
+    .metodos-pag {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metodo {
+      border: 2px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      font-weight: 500;
+    }
+
+    .metodo:hover { border-color: var(--azul); background: #f0f6ff; }
+
+    .metodo.selecionado {
+      border-color: var(--azul);
+      background: #e8f0fb;
+      color: var(--azul);
+    }
+
+    .metodo .icone-pag { font-size: 1.6rem; }
+
+    /* Cartão de crédito */
+    .form-cartao { display: flex; flex-direction: column; gap: 16px; }
+
+    /* Termos */
+    .termos {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: var(--cinza-texto);
+      margin-top: 4px;
+    }
+
+    .termos input[type="checkbox"] {
+      accent-color: var(--azul);
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .termos a { color: var(--azul); text-decoration: none; }
+    .termos a:hover { text-decoration: underline; }
+
+    /* ── Resumo lateral ── */
+    .resumo {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 24px 22px;
+      position: sticky;
+      top: 80px;
+    }
+
+    .resumo h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item {
+      background: var(--fundo);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .resumo-item .titulo {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .resumo-item .detalhe {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+    }
+
+    .resumo-item .estrelas { color: var(--laranja); font-size: 0.78rem; }
+
+    .linha-preco {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      color: var(--cinza-texto);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .linha-preco:last-of-type { border-bottom: none; }
+
+    .linha-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 0 4px;
+      color: var(--texto);
+      border-top: 2px solid var(--cinza-borda);
+      margin-top: 4px;
+    }
+
+    .badge-seguro {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--verde);
+      background: #dcfce7;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+
+    .btn-confirmar {
+      width: 100%;
+      height: 48px;
+      background: var(--azul);
+      color: var(--branco);
+      border: none;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-confirmar:hover { background: var(--azul-hover); }
+
+    .nota-cancelamento {
+      font-size: 0.76rem;
+      color: var(--cinza-texto);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ── Responsividade ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .barra-progresso { padding: 12px 16px; }
+      .passo-linha { width: 24px; }
+
+      .pagina {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+
+      .resumo { position: static; }
+
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+      .metodos-pag { grid-template-columns: 1fr 1fr 1fr; }
+
+      .secao { padding: 20px 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .metodos-pag { grid-template-columns: 1fr; }
+    }
+    .pagamento-detalhes {
+      display: none;
+      background: var(--fundo);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 12px;
+    }
+
+    .pagamento-detalhes.visivel {
+      display: block;
+    }
+
+    .pagamento-info {
+      color: var(--cinza-texto);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .erro-pagamento {
+      display: none;
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      margin-top: 14px;
+    }
+
+    .erro-pagamento.visivel {
+      display: block;
+    }
