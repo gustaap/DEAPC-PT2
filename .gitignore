@@ -5,3 +5,5 @@ images/HAP.jpgZone.Identifier
 images/ryanair.webpZone.Identifier
 images/Sagrada.jpgZone.Identifier
 images/selina.webpZone.Identifier
+database/*.sqlite
+
