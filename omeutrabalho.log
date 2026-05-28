@@ -1,0 +1,283 @@
+commit 97b567ba5b3548a87149bcda7ef7f3474a090fa9
+Author: gustavo <1251018@isep.ipp.pt>
+Date:   Thu May 21 13:19:40 2026 +0100
+
+    fix identifier
+
+commit 7290f3e0aecc0aec7bf42ff22c5e4884b379a864
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Thu May 21 13:19:46 2026 +0100
+
+    adicao coisas
+
+commit 4ed2bc6e679870cd26eec65f240bf0da26a82607
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Thu May 21 13:19:06 2026 +0100
+
+    adicao coisas
+
+commit 4ebab082aef4e93887cc4971019cb85fb103e80a
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Thu May 21 13:11:57 2026 +0100
+
+    logo
+
+commit f920bd611e809327eeec9d34170943853d1979a3
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Thu May 21 12:54:55 2026 +0100
+
+    Adiciona mais hoteis na base de dados (falta mudar a logo)
+
+commit ac4806b86ebe5520d0a9726344879adc40e88727
+Merge: 8a37d01 8876b5c
+Author: joaoamado51 <jjamado51@gmail.com>
+Date:   Thu May 21 12:45:04 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+
+commit 8a37d016be21624bace515e7a514a282572cae24
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Thu May 21 12:38:22 2026 +0100
+
+    Adicao de css e js que estavam concentrados no mesmo html
+
+commit 8876b5cd00de0c3ef1905584c61a3d6bf84d6e88
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 12:32:18 2026 +0100
+
+    arrumacao
+
+commit 30602ee206af3055adbdcf014c72cd2926ce7b71
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 04:30:57 2026 +0100
+
+    criada database universal
+
+commit 08ddc914749390d7cf6e0f52353c5efb2bea716f
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 04:18:12 2026 +0100
+
+    adiciona voo na pricipal
+
+commit 07cb088c9057b66194dd232daefbd0ae3630b419
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 03:03:54 2026 +0100
+
+    adicionadas imagems
+
+commit c7c0937132b506e259a43c3b897f4c6148c07c2d
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 01:34:24 2026 +0100
+
+    fix da reserva
+
+commit f6398a1c1c36711f64726ff17f51d422380bf284
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 01:15:58 2026 +0100
+
+    mais fixs em tudo
+
+commit 954dbb524fb551da67b768077917fc8d7799b857
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu May 21 00:29:28 2026 +0100
+
+    fix da do historico e do login
+
+commit d6af2f7aa2eb8b6e658abcdc2ebceb010c8afe61
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Wed May 20 23:27:01 2026 +0100
+
+    fix na reserva
+
+commit 7932e10128cfac69fbbfb7d3f294534945d2e43a
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Wed May 20 23:08:53 2026 +0100
+
+    added some files to gitignore
+
+commit 84d50b694e214bd47cbfba3d35e067558ac837e2
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Wed May 20 23:07:56 2026 +0100
+
+    improved version with some filters
+
+commit c293fe9e752ec403bd2a17cefcdf7f4020c75299
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 22:19:25 2026 +0100
+
+    Outras mudancas
+
+commit 177568909d1fc6d5d015842d9ea66d667a994a46
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 21:36:01 2026 +0100
+
+    botoes para inicio e afins
+
+commit dd915f5270dc5e7a73f0bed325a3ab313df07dee
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 20:07:06 2026 +0100
+
+    Adicao de pagina de gestao e administracao das reservas
+
+commit 20a6d0e8c898280e11e81af8211cc9cd46a29bf1
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 19:42:25 2026 +0100
+
+    Adicao da pagina de reserva e compra
+
+commit ab3dccf36a34d7b40acab6d97e55d415d360fbb4
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 17:42:49 2026 +0100
+
+    Refinamento pra ficar bonito
+
+commit 2a48a1aee101ae9709ca3961abeb873caf05a5a6
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 17:33:36 2026 +0100
+
+    colocar mais hoteis na base de dados
+
+commit 18009cd4645f86518d9cb40b399376f3c531e0d7
+Merge: 30ef124 01d6709
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 16:47:39 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+
+commit 30ef124c07eefc364564b38a17b75bd4a2e97529
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 16:46:58 2026 +0100
+
+    Adiciona funcionalidade de filtros de estrelas e melhorias de layout
+
+commit 01d6709170fe3fac7c6f36278f0b005a01dd6a3d
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 16:35:53 2026 +0100
+
+    Adiciona imagens destacadas
+
+commit dad72724788db21d159015e016e7fc789f5abe83
+Merge: 5f3af3a 1e31e97
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 16:31:19 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+
+commit 5f3af3a5bbf52c8d65515180821fa6bbed223943
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 16:29:54 2026 +0100
+
+    Adiciona JavaScript para os filtros e ordenacao funcionarem
+
+commit 1e31e97a234a4eea92bc0c55c544902aee7cd369
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 16:06:55 2026 +0100
+
+    Mudanca de fonte na logo
+
+commit 211d2f6db6e6c9fc21f2ef853e4eec123023be64
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 16:03:40 2026 +0100
+
+    Ajusta CSS do layout segundo wireframe
+
+commit 7be9f3dc151cecc2ed2dbda431ea318d39127a96
+Merge: 0f44a21 6d929ec
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 15:51:36 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+
+commit 6d929ec4ddf4f0370e01d811487c8b4c566b4a60
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 15:49:34 2026 +0100
+
+    Adiciona autocomplete de destinos na pesquisa
+
+commit 43a91570615df49a7d677ee161b39d68096368c5
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 15:47:09 2026 +0100
+
+    Adiciona autocomplete de destinos na pesquisa
+
+commit 0f44a21452b0c525b78ed49a8466c14e66ed9cb9
+Author: miguel <miguelneveslopesvidal19@gmail.com>
+Date:   Wed May 20 15:46:44 2026 +0100
+
+    Adicao da pagina de resultados - estrutura dos filtros e cards de hoteis
+
+commit b6036e2704ffa151456e5f851508f8f358ef6022
+Merge: 009f3d3 59ccaf3
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 15:44:14 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+    :wq
+
+commit 009f3d3927f9618004b8c4b4f1d9d521421bc021
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 15:44:07 2026 +0100
+
+    Adicao de pagina da zona do historico de reservas
+
+commit 59ccaf3b2e879e1150ecddd4efa05f509d048b79
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 15:26:51 2026 +0100
+
+    Melhora homepage
+
+commit c52dfb5729ff0cb2013312185918cbcc0568f0e9
+Merge: 09f6506 79889cb
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 15:19:55 2026 +0100
+
+    Merge branch 'main' of https://github.com/gustaap/DEAPC-PT2
+    :wq
+
+commit 09f65060386c3192dbebb7c74e705a9b26067ca8
+Author: Joao Amado Alves <jjamado51@gmail.com>
+Date:   Wed May 20 15:13:28 2026 +0100
+
+    Adicao da pagina de login - formulario para email, password e criar conta
+
+commit 79889cbc9b7dd100c55a69f5ea5e10b42e8cf228
+Author: gustavo <domgustavoprado@email.com>
+Date:   Wed May 20 14:53:05 2026 +0100
+
+    Cria página inicial com pesquisa e destaques
+
+commit 12f1a498e56e5be43e17591384f7b3931ea396b2
+Author: joaoamado51 <jjamado51@gmail.com>
+Date:   Wed May 20 14:38:16 2026 +0100
+
+    pasta styles ex1 guiao W1
+
+commit 08768b1a31cc6735afa66c9bfcaf0bd54f809650
+Author: joaoamado51 <jjamado51@gmail.com>
+Date:   Wed May 20 14:37:45 2026 +0100
+
+    pasta scripts ex1 guiao W1
+
+commit e25aa76701e334ac2999c33207c208965d487d11
+Author: joaoamado51 <jjamado51@gmail.com>
+Date:   Wed May 20 14:37:05 2026 +0100
+
+    pasta images ex1 guiao W1
+
+commit e9d5886463ec83e872e6d024b7d2c21263a7bee1
+Author: gustavo <1251018@isep.ipp.pt>
+Date:   Thu Apr 30 12:46:51 2026 +0100
+
+    README certo
+
+commit 181b28536f1db68b144d5fa9cf595813787cf82d
+Author: gustavo <1251018@isep.ipp.pt>
+Date:   Thu Apr 30 11:58:25 2026 +0100
+
+    Atualizar o README
+
+commit b793e8039f3b04abf7144175721b5ff8394b1499
+Author: gustaap <1251018@isep.ipp.pt>
+Date:   Thu Apr 30 11:51:48 2026 +0100
+
+    Initial commit
